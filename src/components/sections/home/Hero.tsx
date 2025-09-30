@@ -1,7 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../../ui/Button';
+import InputMaskComponent from '../../ui/InputMask';
+import { useNotification } from '../../ui/NotificationProvider';
 
 const Hero: React.FC = () => {
+  const { addNotification } = useNotification();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    business: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Validate form
+    if (!formData.name.trim()) {
+      addNotification({
+        type: 'error',
+        title: 'Validation Error',
+        message: 'Please enter your name',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!formData.email.trim()) {
+      addNotification({
+        type: 'error',
+        title: 'Validation Error',
+        message: 'Please enter your email address',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!formData.phone.trim()) {
+      addNotification({
+        type: 'error',
+        title: 'Validation Error',
+        message: 'Please enter your phone number',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!formData.business.trim()) {
+      addNotification({
+        type: 'error',
+        title: 'Validation Error',
+        message: 'Please select your business type',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      addNotification({
+        type: 'success',
+        title: 'Request Submitted!',
+        message: 'Thank you! We\'ll contact you within 24 hours to schedule your free assessment.',
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        business: '',
+      });
+    } catch (error) {
+      addNotification({
+        type: 'error',
+        title: 'Submission Failed',
+        message: 'Something went wrong. Please try again or contact us directly.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="relative bg-primary-800 overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24">
       {/* Background gradient */}
@@ -63,46 +151,52 @@ const Hero: React.FC = () => {
               <h3 className="text-xl font-semibold font-heading text-primary-800 mb-4">
                 Free Financial Health Check
               </h3>
-              <form className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-neutral-700 mb-1">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                    placeholder="John Smith"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-1">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                    placeholder="john@example.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-neutral-700 mb-1">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                    placeholder="(123) 456-7890"
-                  />
-                </div>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <InputMaskComponent
+                  id="name"
+                  label="Your Name"
+                  type="text"
+                  placeholder="John Smith"
+                  value={formData.name}
+                  onChange={(value) => handleInputChange('name', value)}
+                  required
+                  validation={{
+                    minLength: 2,
+                    message: 'Name must be at least 2 characters long'
+                  }}
+                />
+                
+                <InputMaskComponent
+                  id="email"
+                  label="Email Address"
+                  type="email"
+                  placeholder="john@example.com"
+                  value={formData.email}
+                  onChange={(value) => handleInputChange('email', value)}
+                  required
+                />
+                
+                <InputMaskComponent
+                  id="phone"
+                  label="Phone Number"
+                  type="tel"
+                  placeholder="(123) 456-7890"
+                  mask="(999) 999-9999"
+                  value={formData.phone}
+                  onChange={(value) => handleInputChange('phone', value)}
+                  required
+                />
+                
                 <div>
                   <label htmlFor="business" className="block text-sm font-medium text-neutral-700 mb-1">
                     Business Type
+                    <span className="text-red-500 ml-1">*</span>
                   </label>
                   <select
                     id="business"
+                    value={formData.business}
+                    onChange={(e) => handleInputChange('business', e.target.value)}
+                    required
                     className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                   >
                     <option value="">Select your business type</option>
@@ -113,13 +207,15 @@ const Hero: React.FC = () => {
                     <option value="other">Other</option>
                   </select>
                 </div>
+                
                 <Button
                   variant="secondary"
                   size="md"
                   type="submit"
                   fullWidth
+                  disabled={isSubmitting}
                 >
-                  Get Your Free Assessment
+                  {isSubmitting ? 'Submitting...' : 'Get Your Free Assessment'}
                 </Button>
               </form>
             </div>

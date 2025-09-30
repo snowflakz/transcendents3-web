@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../../ui/Button';
 import { CheckCircle } from 'lucide-react';
+import InputMaskComponent from '../../ui/InputMask';
+import { useNotification } from '../../ui/NotificationProvider';
 
 const CallToAction: React.FC = () => {
+  const { addNotification } = useNotification();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const benefits = [
     'Save time and focus on growing your business',
     'Reduce costly financial errors and risks',
@@ -10,6 +21,73 @@ const CallToAction: React.FC = () => {
     'Streamline your QuickBooks and financial processes',
     'Access expert financial guidance when you need it',
   ];
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Validate form
+    if (!formData.name.trim()) {
+      addNotification({
+        type: 'error',
+        title: 'Validation Error',
+        message: 'Please enter your name',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!formData.email.trim()) {
+      addNotification({
+        type: 'error',
+        title: 'Validation Error',
+        message: 'Please enter your email address',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!formData.phone.trim()) {
+      addNotification({
+        type: 'error',
+        title: 'Validation Error',
+        message: 'Please enter your phone number',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      addNotification({
+        type: 'success',
+        title: 'Consultation Requested!',
+        message: 'Thank you! We\'ll contact you within 24 hours to schedule your free consultation.',
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+      });
+    } catch (error) {
+      addNotification({
+        type: 'error',
+        title: 'Submission Failed',
+        message: 'Something went wrong. Please try again or contact us directly.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section className="py-16 md:py-24 bg-neutral-50">
@@ -51,61 +129,67 @@ const CallToAction: React.FC = () => {
                 ))}
               </ul>
               
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="cta-name" className="block text-sm font-medium text-neutral-700 mb-1">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      id="cta-name"
-                      className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                      placeholder="John Smith"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="cta-email" className="block text-sm font-medium text-neutral-700 mb-1">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      id="cta-email"
-                      className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="cta-phone" className="block text-sm font-medium text-neutral-700 mb-1">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="cta-phone"
-                    className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                    placeholder="(123) 456-7890"
+                  <InputMaskComponent
+                    id="cta-name"
+                    label="Your Name"
+                    type="text"
+                    placeholder="John Smith"
+                    value={formData.name}
+                    onChange={(value) => handleInputChange('name', value)}
+                    required
+                    validation={{
+                      minLength: 2,
+                      message: 'Name must be at least 2 characters long'
+                    }}
+                  />
+                  
+                  <InputMaskComponent
+                    id="cta-email"
+                    label="Email Address"
+                    type="email"
+                    placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={(value) => handleInputChange('email', value)}
+                    required
                   />
                 </div>
-                <div>
-                  <label htmlFor="cta-message" className="block text-sm font-medium text-neutral-700 mb-1">
-                    How can we help?
-                  </label>
-                  <textarea
-                    id="cta-message"
-                    rows={3}
-                    className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                    placeholder="Tell us about your business and financial needs"
-                  ></textarea>
-                </div>
+                
+                <InputMaskComponent
+                  id="cta-phone"
+                  label="Phone Number"
+                  type="tel"
+                  placeholder="(123) 456-7890"
+                  mask="(999) 999-9999"
+                  value={formData.phone}
+                  onChange={(value) => handleInputChange('phone', value)}
+                  required
+                />
+                
+                <InputMaskComponent
+                  id="cta-message"
+                  label="How can we help?"
+                  type="textarea"
+                  placeholder="Tell us about your business and financial needs"
+                  value={formData.message}
+                  onChange={(value) => handleInputChange('message', value)}
+                  rows={3}
+                  validation={{
+                    minLength: 10,
+                    message: 'Please provide at least 10 characters describing your needs'
+                  }}
+                />
+                
                 <div className="!mt-6">
                   <Button
                     variant="primary"
                     size="lg"
                     type="submit"
                     fullWidth
+                    disabled={isSubmitting}
                   >
-                    Request Your Free Consultation
+                    {isSubmitting ? 'Submitting...' : 'Request Your Free Consultation'}
                   </Button>
                 </div>
                 <p className="text-xs text-neutral-500 text-center">

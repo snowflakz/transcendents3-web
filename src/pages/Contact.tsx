@@ -1,18 +1,121 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, CheckCircle, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import Button from '../components/ui/Button';
+import InputMaskComponent from '../components/ui/InputMask';
+import { useNotification } from '../components/ui/NotificationProvider';
 
 const Contact: React.FC = () => {
+  const { addNotification } = useNotification();
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+    consent: false,
+  });
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleInputChange = (field: string, value: string | boolean) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('submitting');
-    
-    // Simulate form submission
-    setTimeout(() => {
+
+    // Validate form
+    if (!formData.firstName.trim()) {
+      addNotification({
+        type: 'error',
+        title: 'Validation Error',
+        message: 'Please enter your first name',
+      });
+      setFormStatus('idle');
+      return;
+    }
+
+    if (!formData.lastName.trim()) {
+      addNotification({
+        type: 'error',
+        title: 'Validation Error',
+        message: 'Please enter your last name',
+      });
+      setFormStatus('idle');
+      return;
+    }
+
+    if (!formData.email.trim()) {
+      addNotification({
+        type: 'error',
+        title: 'Validation Error',
+        message: 'Please enter your email address',
+      });
+      setFormStatus('idle');
+      return;
+    }
+
+    if (!formData.subject.trim()) {
+      addNotification({
+        type: 'error',
+        title: 'Validation Error',
+        message: 'Please enter a subject',
+      });
+      setFormStatus('idle');
+      return;
+    }
+
+    if (!formData.message.trim()) {
+      addNotification({
+        type: 'error',
+        title: 'Validation Error',
+        message: 'Please enter your message',
+      });
+      setFormStatus('idle');
+      return;
+    }
+
+    if (!formData.consent) {
+      addNotification({
+        type: 'error',
+        title: 'Validation Error',
+        message: 'Please consent to storing your information',
+      });
+      setFormStatus('idle');
+      return;
+    }
+
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      addNotification({
+        type: 'success',
+        title: 'Message Sent!',
+        message: 'Thank you for contacting us. We\'ll get back to you within 24 hours.',
+      });
+
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+        consent: false,
+      });
+      
       setFormStatus('success');
-    }, 1500);
+    } catch (error) {
+      addNotification({
+        type: 'error',
+        title: 'Submission Failed',
+        message: 'Something went wrong. Please try again or contact us directly.',
+      });
+      setFormStatus('error');
+    }
   };
   
   return (
@@ -138,93 +241,98 @@ const Contact: React.FC = () => {
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="firstName" className="block text-sm font-medium text-neutral-700 mb-1">
-                          First Name*
-                        </label>
-                        <input
-                          type="text"
-                          id="firstName"
-                          required
-                          className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                          placeholder="John"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="lastName" className="block text-sm font-medium text-neutral-700 mb-1">
-                          Last Name*
-                        </label>
-                        <input
-                          type="text"
-                          id="lastName"
-                          required
-                          className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                          placeholder="Smith"
-                        />
-                      </div>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-1">
-                          Email Address*
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          required
-                          className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                          placeholder="john@example.com"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-neutral-700 mb-1">
-                          Phone Number
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                          placeholder="(123) 456-7890"
-                        />
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-neutral-700 mb-1">
-                        Subject*
-                      </label>
-                      <input
+                      <InputMaskComponent
+                        id="firstName"
+                        label="First Name"
                         type="text"
-                        id="subject"
+                        placeholder="John"
+                        value={formData.firstName}
+                        onChange={(value) => handleInputChange('firstName', value)}
                         required
-                        className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                        placeholder="How can we help you?"
+                        validation={{
+                          minLength: 2,
+                          message: 'First name must be at least 2 characters long'
+                        }}
+                      />
+                      
+                      <InputMaskComponent
+                        id="lastName"
+                        label="Last Name"
+                        type="text"
+                        placeholder="Smith"
+                        value={formData.lastName}
+                        onChange={(value) => handleInputChange('lastName', value)}
+                        required
+                        validation={{
+                          minLength: 2,
+                          message: 'Last name must be at least 2 characters long'
+                        }}
                       />
                     </div>
                     
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-neutral-700 mb-1">
-                        Message*
-                      </label>
-                      <textarea
-                        id="message"
-                        rows={5}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <InputMaskComponent
+                        id="email"
+                        label="Email Address"
+                        type="email"
+                        placeholder="john@example.com"
+                        value={formData.email}
+                        onChange={(value) => handleInputChange('email', value)}
                         required
-                        className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-                        placeholder="Please provide details about your inquiry..."
-                      ></textarea>
+                      />
+                      
+                      <InputMaskComponent
+                        id="phone"
+                        label="Phone Number"
+                        type="tel"
+                        placeholder="(123) 456-7890"
+                        mask="(999) 999-9999"
+                        value={formData.phone}
+                        onChange={(value) => handleInputChange('phone', value)}
+                      />
                     </div>
+                    
+                    <InputMaskComponent
+                      id="subject"
+                      label="Subject"
+                      type="text"
+                      placeholder="How can we help you?"
+                      value={formData.subject}
+                      onChange={(value) => handleInputChange('subject', value)}
+                      required
+                      validation={{
+                        minLength: 5,
+                        message: 'Subject must be at least 5 characters long'
+                      }}
+                    />
+                    
+                    <InputMaskComponent
+                      id="message"
+                      label="Message"
+                      type="textarea"
+                      placeholder="Please provide details about your inquiry..."
+                      value={formData.message}
+                      onChange={(value) => handleInputChange('message', value)}
+                      required
+                      rows={5}
+                      validation={{
+                        minLength: 20,
+                        message: 'Message must be at least 20 characters long'
+                      }}
+                    />
                     
                     <div className="flex items-center">
                       <input
                         type="checkbox"
                         id="consent"
+                        checked={formData.consent}
+                        onChange={(e) => handleInputChange('consent', e.target.checked)}
                         required
                         className="h-4 w-4 text-primary-600 border-neutral-300 rounded focus:ring-primary-500"
                       />
                       <label htmlFor="consent" className="ml-2 block text-sm text-neutral-700">
                         I consent to having this website store my submitted information so they can respond to my inquiry.
+                        <span className="text-red-500 ml-1">*</span>
                       </label>
                     </div>
                     

@@ -9,25 +9,19 @@ const About: React.FC = () => {
       name: "Jennifer Thompson",
       position: "Founder & CEO",
       bio: "With over 15 years of experience in financial management, Jennifer founded Transcendents3 to help small businesses thrive through expert financial guidance.",
-      imageSrc: "https://images.pexels.com/photos/3796217/pexels-photo-3796217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      imageSrc: "/team/jennifer-thompson.jpg"
     },
     {
       name: "Michael Rodriguez",
       position: "Senior Tax Specialist",
       bio: "Michael specializes in tax strategy and compliance, helping clients navigate complex tax regulations while maximizing deductions and minimizing liabilities.",
-      imageSrc: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      imageSrc: "/team/michael-rodriguez.jpg"
     },
     {
       name: "Sarah Chen",
       position: "QuickBooks Expert",
       bio: "As a certified QuickBooks ProAdvisor, Sarah helps clients optimize their accounting systems for maximum efficiency and accuracy.",
-      imageSrc: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-    },
-    {
-      name: "David Wilson",
-      position: "CFO Services Director",
-      bio: "David brings Fortune 500 financial leadership experience to help growing businesses make strategic financial decisions.",
-      imageSrc: "https://images.pexels.com/photos/3785104/pexels-photo-3785104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      imageSrc: "/team/sarah-chen.jpg"
     }
   ];
 
@@ -141,7 +135,7 @@ const About: React.FC = () => {
             centered
           />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {teamMembers.map((member, index) => (
               <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:-translate-y-1 duration-300">
                 <div className="h-64 overflow-hidden">

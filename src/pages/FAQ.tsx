@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Plus, Minus } from 'lucide-react';
 
 const faqs = [
   {
@@ -51,35 +52,71 @@ const faqs = [
   }
 ];
 
-const FAQ: React.FC = () => (
-  <>
-    {/* Page Header */}
-    <div className="bg-primary-800 py-20 md:py-28">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold font-heading text-white mb-6">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-xl text-neutral-200">
-            Answers to common questions about our financial services and support
-          </p>
+const FAQ: React.FC = () => {
+  const [openItems, setOpenItems] = useState<number[]>([]);
+
+  const toggleItem = (index: number) => {
+    setOpenItems(prev => 
+      prev.includes(index) 
+        ? prev.filter(item => item !== index)
+        : [...prev, index]
+    );
+  };
+
+  return (
+    <>
+      {/* Page Header */}
+      <div className="bg-primary-800 py-20 md:py-28">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold font-heading text-white mb-6">
+              Frequently Asked Questions
+            </h1>
+            <p className="text-xl text-neutral-200">
+              Answers to common questions about our financial services and support
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-    {/* FAQ Section */}
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto space-y-6">
-          {faqs.map((faq, idx) => (
-            <div key={idx} className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-semibold font-heading text-primary-800 mb-3">{faq.question}</h2>
-              <p className="text-neutral-600">{faq.answer}</p>
-            </div>
-          ))}
+      
+      {/* FAQ Section */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto space-y-4">
+            {faqs.map((faq, idx) => {
+              const isOpen = openItems.includes(idx);
+              return (
+                <div key={idx} className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <button
+                    onClick={() => toggleItem(idx)}
+                    className="w-full p-6 text-left flex items-center justify-between hover:bg-neutral-50 transition-colors"
+                  >
+                    <h2 className="text-lg font-semibold font-heading text-primary-800 pr-4">
+                      {faq.question}
+                    </h2>
+                    <div className="flex-shrink-0">
+                      {isOpen ? (
+                        <Minus className="h-5 w-5 text-primary-600" />
+                      ) : (
+                        <Plus className="h-5 w-5 text-primary-600" />
+                      )}
+                    </div>
+                  </button>
+                  <div className={`transition-all duration-300 ease-in-out ${
+                    isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                  } overflow-hidden`}>
+                    <div className="px-6 pb-6">
+                      <p className="text-neutral-600 leading-relaxed">{faq.answer}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
-  </>
-);
+      </section>
+    </>
+  );
+};
 
 export default FAQ; 

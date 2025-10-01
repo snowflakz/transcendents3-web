@@ -250,7 +250,7 @@ const Blog: React.FC = () => {
                     <Link 
                       key={post.id}
                       to={`/blog/${post.id}`}
-                      className="flex items-start group"
+                      className="flex items-start group hover:bg-neutral-50 p-2 rounded transition-colors"
                     >
                       <div className="w-16 h-16 rounded overflow-hidden flex-shrink-0">
                         <img 

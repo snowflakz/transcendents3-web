@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 import Button from '../components/ui/Button';
 
 const blogPosts = [
@@ -312,6 +313,23 @@ const BlogDetail: React.FC = () => {
       </div>
       <img src={post.imageSrc} alt={post.title} className="rounded-lg shadow-md mb-8 w-full h-72 object-cover" />
       <div className="prose prose-lg max-w-none mb-12">{post.content}</div>
+      
+      {/* Bottom Navigation */}
+      <div className="flex justify-between items-center mb-8">
+        <Link to="/blog" className="text-primary-600 hover:underline inline-flex items-center">
+          <ArrowLeft size={16} className="mr-2" />
+          Back to Blog
+        </Link>
+        <div className="flex space-x-4">
+          <Button variant="outline" size="sm" href="/contact">
+            Contact Us
+          </Button>
+          <Button variant="secondary" size="sm" href="/services">
+            Our Services
+          </Button>
+        </div>
+      </div>
+      
       <div className="bg-primary-50 p-6 rounded-lg text-center">
         <h2 className="text-2xl font-bold text-primary-800 mb-2">Ready to take the next step?</h2>
         <p className="mb-4 text-neutral-700">Contact us today for a personalized consultation and discover how we can help your business thrive.</p>

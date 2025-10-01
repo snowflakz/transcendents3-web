@@ -1,9 +1,31 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleServiceClick = (path: string) => {
+    const [base, hash] = path.split('#');
+    if (location.pathname === base && hash) {
+      // Already on the page, scroll to section
+      const el = document.getElementById(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      // Navigate, then scroll after navigation
+      navigate(base + (hash ? `#${hash}` : ''));
+      setTimeout(() => {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
+    }
+  };
 
   return (
     <footer className="bg-primary-800 text-white pt-16 pb-6">
@@ -49,13 +71,13 @@ const Footer: React.FC = () => {
                 { name: 'QuickBooks Support', path: '/services#quickbooks' },
               ].map((service) => (
                 <li key={service.name}>
-                  <Link 
-                    to={service.path} 
-                    className="text-neutral-300 hover:text-secondary-500 transition-colors flex items-center"
+                  <button
+                    onClick={() => handleServiceClick(service.path)}
+                    className="text-neutral-300 hover:text-secondary-500 transition-colors flex items-center text-left"
                   >
                     <ArrowRight size={14} className="mr-2" />
                     {service.name}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>

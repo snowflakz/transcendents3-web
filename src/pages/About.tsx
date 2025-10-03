@@ -6,9 +6,9 @@ import Button from '../components/ui/Button';
 const About: React.FC = () => {
   const teamMembers = [
     {
-      name: "Jennifer",
+      name: "Anita",
       position: "Founder & CEO",
-      bio: "With over 15 years of experience in financial management, Jennifer founded Transcendents3 to help small businesses thrive through expert financial guidance.",
+      bio: "With over 15 years of experience in financial management, Anita founded Transcendents3 to help small businesses thrive through expert financial guidance. She is a certified QuickBooks ProAdvisor.",
       imageSrc: "/team/Jennifer.png"
     },
     {

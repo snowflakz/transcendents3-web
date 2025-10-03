@@ -6,22 +6,28 @@ import Button from '../components/ui/Button';
 const About: React.FC = () => {
   const teamMembers = [
     {
-      name: "Jennifer Thompson",
+      name: "Jennifer",
       position: "Founder & CEO",
       bio: "With over 15 years of experience in financial management, Jennifer founded Transcendents3 to help small businesses thrive through expert financial guidance.",
       imageSrc: "/team/Jennifer.png"
     },
     {
-      name: "Michael Rodriguez",
+      name: "Michael",
       position: "Senior Tax Specialist",
       bio: "Michael specializes in tax strategy and compliance, helping clients navigate complex tax regulations while maximizing deductions and minimizing liabilities.",
       imageSrc: "/team/Michael.png"
     },
     {
-      name: "Sarah Chen",
+      name: "Sarah",
       position: "QuickBooks Expert",
       bio: "As a certified QuickBooks ProAdvisor, Sarah helps clients optimize their accounting systems for maximum efficiency and accuracy.",
-      imageSrc: "/team/Sarah.jpg"
+      imageSrc: "/team/Sarah.png"
+    },
+    {
+      name: "Sumar",
+      position: "Financial Analyst",
+      bio: "Sumar brings a keen eye for detail and analytical skills to provide precise financial reporting and strategic insights for our clients.",
+      imageSrc: "/team/Sumar.jpg"
     }
   ];
 
@@ -135,17 +141,17 @@ const About: React.FC = () => {
             centered
           />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
             {teamMembers.map((member, index) => (
               <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:-translate-y-1 duration-300">
-                <div className="h-64 overflow-hidden">
+                <div className="relative w-full pt-[100%]">
                   <img 
                     src={member.imageSrc} 
                     alt={`${member.name} - ${member.position} at Transcendents3 Financial Services`} 
-                    className="w-full h-full object-cover"
+                    className="absolute top-0 left-0 w-full h-full object-contain object-top"
                     loading="lazy"
                     width="300"
-                    height="256"
+                    height="300"
                   />
                 </div>
                 <div className="p-6">

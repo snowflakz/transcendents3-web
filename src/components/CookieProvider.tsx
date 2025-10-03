@@ -47,55 +47,67 @@ export const CookieProvider: React.FC<CookieProviderProps> = ({ children }) => {
   };
 
   const acceptAllCookies = () => {
-    const allAccepted = {
-      necessary: true,
-      analytics: true,
-      marketing: true,
-      preferences: true
-    };
-    
-    localStorage.setItem('cookie-preferences', JSON.stringify(allAccepted));
-    localStorage.setItem('cookie-consent', 'accepted');
-    setPreferences(allAccepted);
-    
-    // Initialize analytics and marketing tools
-    initializeAnalytics();
-    initializeMarketing();
+    try {
+      const allAccepted = {
+        necessary: true,
+        analytics: true,
+        marketing: true,
+        preferences: true
+      };
+      
+      localStorage.setItem('cookie-preferences', JSON.stringify(allAccepted));
+      localStorage.setItem('cookie-consent', 'accepted');
+      setPreferences(allAccepted);
+      
+      // Initialize analytics and marketing tools
+      initializeAnalytics();
+      initializeMarketing();
+    } catch (error) {
+      console.error('Error accepting cookies:', error);
+    }
   };
 
   const denyCookies = () => {
-    const minimal = {
-      necessary: true,
-      analytics: false,
-      marketing: false,
-      preferences: false
-    };
-    
-    localStorage.setItem('cookie-preferences', JSON.stringify(minimal));
-    localStorage.setItem('cookie-consent', 'denied');
-    setPreferences(minimal);
-    
-    // Disable analytics and marketing tools
-    disableAnalytics();
-    disableMarketing();
+    try {
+      const minimal = {
+        necessary: true,
+        analytics: false,
+        marketing: false,
+        preferences: false
+      };
+      
+      localStorage.setItem('cookie-preferences', JSON.stringify(minimal));
+      localStorage.setItem('cookie-consent', 'denied');
+      setPreferences(minimal);
+      
+      // Disable analytics and marketing tools
+      disableAnalytics();
+      disableMarketing();
+    } catch (error) {
+      console.error('Error denying cookies:', error);
+    }
   };
 
   const updatePreferences = (newPreferences: CookiePrefsType) => {
-    localStorage.setItem('cookie-preferences', JSON.stringify(newPreferences));
-    localStorage.setItem('cookie-consent', 'custom');
-    setPreferences(newPreferences);
-    
-    // Apply preferences
-    if (newPreferences.analytics) {
-      initializeAnalytics();
-    } else {
-      disableAnalytics();
-    }
-    
-    if (newPreferences.marketing) {
-      initializeMarketing();
-    } else {
-      disableMarketing();
+    try {
+      localStorage.setItem('cookie-preferences', JSON.stringify(newPreferences));
+      localStorage.setItem('cookie-consent', 'custom');
+      setPreferences(newPreferences);
+      
+      // Apply preferences
+      if (newPreferences.analytics) {
+        initializeAnalytics();
+      } else {
+        disableAnalytics();
+      }
+      
+      if (newPreferences.marketing) {
+        initializeMarketing();
+      } else {
+        disableMarketing();
+      }
+    } catch (error) {
+      console.error('Error updating cookie preferences:', error);
     }
   };
 
@@ -106,8 +118,8 @@ export const CookieProvider: React.FC<CookieProviderProps> = ({ children }) => {
   // Analytics initialization
   const initializeAnalytics = () => {
     // Google Analytics initialization
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('consent', 'update', {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('consent', 'update', {
         analytics_storage: 'granted'
       });
     }
@@ -118,8 +130,8 @@ export const CookieProvider: React.FC<CookieProviderProps> = ({ children }) => {
 
   const disableAnalytics = () => {
     // Disable Google Analytics
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('consent', 'update', {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('consent', 'update', {
         analytics_storage: 'denied'
       });
     }
@@ -176,9 +188,4 @@ export const CookieProvider: React.FC<CookieProviderProps> = ({ children }) => {
   );
 };
 
-// Extend Window interface for gtag
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void;
-  }
-}
+// Remove global window interface declaration to avoid conflicts

@@ -97,17 +97,24 @@ const Hero: React.FC = () => {
       
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.pexels.com/photos/3943716/pexels-photo-3943716.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] bg-cover bg-center"></div>
+        <div 
+          className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://images.pexels.com/photos/3943716/pexels-photo-3943716.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')"
+          }}
+          role="img"
+          aria-label="Professional financial services and business consulting background image"
+        ></div>
       </div>
       
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="animate-slide-up">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white leading-tight mb-6">
-              Take Control of Your <span className="text-secondary-500">Financial Future</span>
+              Expert <span className="text-secondary-500">Bookkeeping & Payroll</span> Services for Your Business
             </h1>
             <p className="text-xl text-neutral-200 mb-8 max-w-lg">
-              Expert bookkeeping, payroll, and financial consulting tailored to help your business thrive.
+              Professional bookkeeping, payroll management, tax preparation, and business consulting services. Let our certified experts handle your finances so you can focus on growing your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 

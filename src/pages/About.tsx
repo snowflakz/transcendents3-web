@@ -9,19 +9,19 @@ const About: React.FC = () => {
       name: "Jennifer Thompson",
       position: "Founder & CEO",
       bio: "With over 15 years of experience in financial management, Jennifer founded Transcendents3 to help small businesses thrive through expert financial guidance.",
-      imageSrc: "./team/Jennifer.png"
+      imageSrc: "/team/Jennifer.png"
     },
     {
       name: "Michael Rodriguez",
       position: "Senior Tax Specialist",
       bio: "Michael specializes in tax strategy and compliance, helping clients navigate complex tax regulations while maximizing deductions and minimizing liabilities.",
-      imageSrc: "./team/Michael.png"
+      imageSrc: "/team/Michael.png"
     },
     {
       name: "Sarah Chen",
       position: "QuickBooks Expert",
       bio: "As a certified QuickBooks ProAdvisor, Sarah helps clients optimize their accounting systems for maximum efficiency and accuracy.",
-      imageSrc: "./team/Sarah.jpg"
+      imageSrc: "/team/Sarah.jpg"
     }
   ];
 
@@ -141,8 +141,11 @@ const About: React.FC = () => {
                 <div className="h-64 overflow-hidden">
                   <img 
                     src={member.imageSrc} 
-                    alt={member.name} 
+                    alt={`${member.name} - ${member.position} at Transcendents3 Financial Services`} 
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    width="300"
+                    height="256"
                   />
                 </div>
                 <div className="p-6">

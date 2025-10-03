@@ -7,32 +7,32 @@ const Services: React.FC = () => {
   const services = [
     {
       icon: <BookOpen size={24} />,
-      title: 'Bookkeeping',
-      description: 'Accurate, hassle-free bookkeeping to keep your finances organized and up-to-date.',
+      title: 'Professional Bookkeeping Services',
+      description: 'Comprehensive bookkeeping services including accounts payable, accounts receivable, bank reconciliation, and financial reporting to keep your business finances organized and compliant.',
       href: '/services#bookkeeping',
     },
     {
       icon: <DollarSign size={24} />,
-      title: 'Payroll',
-      description: 'Streamlined payroll solutions to ensure your team is paid accurately and on time.',
+      title: 'Payroll Management & Processing',
+      description: 'Complete payroll solutions including employee payment processing, tax withholdings, benefits administration, and payroll reporting for businesses of all sizes.',
       href: '/services#payroll',
     },
     {
       icon: <FileText size={24} />,
-      title: 'QuickBooks (QBO) Cleanup',
-      description: 'Professional QuickBooks Online file cleanup and optimization for accurate, reliable financials.',
+      title: 'QuickBooks Online (QBO) Cleanup',
+      description: 'Expert QuickBooks Online file cleanup, data organization, and optimization services to ensure accurate financial records and improved business performance.',
       href: '/services#quickbooks-cleanup',
     },
     {
       icon: <LineChart size={24} />,
-      title: 'Business Consulting',
-      description: 'Strategic advice to optimize your operations and drive sustainable growth.',
+      title: 'Business Consulting & Strategy',
+      description: 'Strategic business consulting services including financial analysis, growth planning, process optimization, and performance improvement to drive sustainable business growth.',
       href: '/services#consulting',
     },
     {
       icon: <Laptop size={24} />,
-      title: 'QuickBooks Support',
-      description: 'Professional QuickBooks file repair, cleanup, and optimization services.',
+      title: 'QuickBooks Support & Training',
+      description: 'Professional QuickBooks support including file repair, data migration, user training, and ongoing technical assistance to maximize your accounting software efficiency.',
       href: '/services#quickbooks',
     },
   ];
@@ -41,8 +41,8 @@ const Services: React.FC = () => {
     <section className="py-16 md:py-24 bg-neutral-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          title="Our Financial Services"
-          subtitle="Comprehensive solutions tailored to meet your business needs"
+          title="Professional Financial Services & Business Solutions"
+          subtitle="Expert bookkeeping, payroll management, tax preparation, and business consulting services designed to help small and medium-sized businesses thrive and grow"
           centered
         />
         

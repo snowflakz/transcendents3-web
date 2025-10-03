@@ -95,9 +95,12 @@ const Header: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
-              src={isScrolled ? "/logo Transcent 2_png.png" : "/other logo.png"}
-              alt="Transcendents3 Logo" 
+              src={isScrolled ? "/logo%20Transcent%202_png.png" : "/other%20logo.png"}
+              alt="Transcendents3 - Expert Financial Services for Small and Medium Businesses" 
               className="h-12 w-auto"
+              loading="eager"
+              width="120"
+              height="48"
             />
           </Link>
 

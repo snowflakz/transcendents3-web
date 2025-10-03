@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import ChatWidget from '../ChatWidget';
+import SimpleCookieBanner from '../SimpleCookieBanner';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </main>
       <Footer />
       <ChatWidget />
+      <SimpleCookieBanner />
     </div>
   );
 };

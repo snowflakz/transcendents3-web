@@ -70,27 +70,27 @@ const SimpleCookieBanner: React.FC = () => {
           </p>
 
           {/* Action Buttons */}
-          <div className="flex gap-3">
+          <div className="flex gap-2">
             <button
               onClick={handleAccept}
-              className="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+              className="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-3 rounded-md transition-colors text-sm"
             >
               Accept All
             </button>
             
             <button
               onClick={handleDecline}
-              className="flex-1 bg-secondary-600 hover:bg-secondary-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+              className="flex-1 bg-secondary-600 hover:bg-secondary-700 text-white font-medium py-2 px-3 rounded-md transition-colors text-sm"
             >
               Deny
             </button>
             
-            <button
-              onClick={() => window.open('/cookie-policy', '_blank')}
-              className="flex-1 bg-neutral-800 hover:bg-neutral-900 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+            <Link
+              to="/cookie-policy"
+              className="flex-1 bg-neutral-800 hover:bg-neutral-900 text-white font-medium py-2 px-3 rounded-md transition-colors text-sm text-center"
             >
               View preferences
-            </button>
+            </Link>
           </div>
         </div>
       </div>

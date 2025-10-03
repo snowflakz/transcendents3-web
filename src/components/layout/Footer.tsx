@@ -98,7 +98,11 @@ const Footer: React.FC = () => {
               ].map((link) => (
                 <li key={link.name}>
                   <Link 
-                    to={link.path} 
+                    to={link.path}
+                    onClick={() => {
+                      // Scroll to top when navigating to a new page
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
                     className="text-neutral-300 hover:text-secondary-500 transition-colors flex items-center"
                   >
                     <ArrowRight size={14} className="mr-2" />

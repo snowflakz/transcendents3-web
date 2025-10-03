@@ -145,7 +145,13 @@ const Header: React.FC = () => {
                   </button>
                 ) : (
                   <Link 
-                    to={link.path} 
+                    to={link.path}
+                    onClick={() => {
+                      // Scroll to top when navigating to a new page
+                      if (location.pathname !== link.path) {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
+                    }}
                     className={`font-medium transition-colors ${
                       location.pathname === link.path 
                         ? (isScrolled ? 'text-primary-600' : 'text-white')
@@ -291,6 +297,13 @@ const Header: React.FC = () => {
                 ) : (
                   <Link
                     to={link.path}
+                    onClick={() => {
+                      setIsOpen(false);
+                      // Scroll to top when navigating to a new page
+                      if (location.pathname !== link.path) {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
+                    }}
                     className={`block px-4 py-2 ${
                       location.pathname === link.path 
                         ? (isScrolled ? 'text-primary-600 bg-primary-50' : 'text-white bg-primary-50')

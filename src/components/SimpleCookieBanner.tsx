@@ -33,46 +33,63 @@ const SimpleCookieBanner: React.FC = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-neutral-200 shadow-lg z-50">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="flex items-start gap-3">
-            <div className="bg-primary-100 p-2 rounded-full flex-shrink-0 mt-1">
-              <Cookie className="h-5 w-5 text-primary-600" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
+      <div className="bg-white rounded-lg shadow-2xl max-w-md w-full mx-4 relative">
+        {/* Close Button */}
+        <button
+          onClick={handleClose}
+          className="absolute top-4 right-4 p-2 hover:bg-neutral-100 rounded-full transition-colors"
+          aria-label="Close cookie notice"
+        >
+          <X className="h-5 w-5 text-neutral-600" />
+        </button>
+
+        {/* Header */}
+        <div className="pt-6 pb-4 px-6">
+          <div className="flex items-center justify-center mb-3">
+            <div className="bg-primary-100 p-3 rounded-full mr-3">
+              <Cookie className="h-6 w-6 text-primary-600" />
             </div>
-            <div>
-              <h3 className="text-lg font-semibold text-primary-800 mb-1">
-                We use cookies
-              </h3>
-              <p className="text-sm text-neutral-600">
-                We use cookies to enhance your browsing experience and analyze site traffic. 
-                By clicking "Accept All", you consent to our use of cookies. 
-                <Link to="/cookie-policy" className="text-primary-600 hover:text-primary-700 underline ml-1">
-                  Learn more
-                </Link>
-              </p>
-            </div>
+            <h2 className="text-xl font-bold font-heading text-primary-800">
+              Transcendents3 Cookie Notice
+            </h2>
           </div>
-          
-          <div className="flex items-center gap-3 flex-shrink-0">
-            <button
-              onClick={handleDecline}
-              className="px-4 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-800 transition-colors"
+        </div>
+
+        {/* Body */}
+        <div className="px-6 pb-6">
+          <p className="text-neutral-700 leading-relaxed mb-6">
+            We use cookies to enhance your browsing experience, improve site performance, and deliver personalized content relevant to your financial needs. By clicking "Accept All," you consent to the use of all cookies. You can manage your preferences or disable non-essential cookies anytime via "Cookie Settings." To learn more, please see our{' '}
+            <Link 
+              to="/cookie-policy" 
+              className="text-primary-600 hover:text-primary-700 underline font-medium"
             >
-              Decline
-            </button>
+              cookie policy
+            </Link>
+            .
+          </p>
+
+          {/* Action Buttons */}
+          <div className="flex gap-3">
             <button
               onClick={handleAccept}
-              className="px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-colors"
+              className="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
             >
               Accept All
             </button>
+            
             <button
-              onClick={handleClose}
-              className="p-2 text-neutral-400 hover:text-neutral-600 transition-colors"
-              aria-label="Close"
+              onClick={handleDecline}
+              className="flex-1 bg-secondary-600 hover:bg-secondary-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
             >
-              <X className="h-4 w-4" />
+              Deny
+            </button>
+            
+            <button
+              onClick={() => window.open('/cookie-policy', '_blank')}
+              className="flex-1 bg-neutral-800 hover:bg-neutral-900 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+            >
+              View preferences
             </button>
           </div>
         </div>

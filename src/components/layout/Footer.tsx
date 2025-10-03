@@ -146,36 +146,31 @@ const Footer: React.FC = () => {
             <p className="text-neutral-400 text-sm">
               &copy; {currentYear} Transcedent S3. All rights reserved.
             </p>
-            <p className="text-neutral-400 text-sm mt-2 md:mt-0">
-              Designed with ❤️ for financial excellence
-            </p>
-          </div>
-          
-          {/* Legal Links */}
-          <div className="flex flex-wrap justify-center gap-4 mt-4 pt-4 border-t border-primary-700">
-            <Link 
-              to="/privacy-policy" 
-              className="text-neutral-400 hover:text-secondary-500 transition-colors text-sm"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              Privacy Policy
-            </Link>
-            <span className="text-neutral-500">•</span>
-            <Link 
-              to="/cookie-policy" 
-              className="text-neutral-400 hover:text-secondary-500 transition-colors text-sm"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              Cookie Policy
-            </Link>
-            <span className="text-neutral-500">•</span>
-            <Link 
-              to="/terms-of-service" 
-              className="text-neutral-400 hover:text-secondary-500 transition-colors text-sm"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              Terms of Service
-            </Link>
+            <div className="flex flex-wrap gap-4 mt-2 md:mt-0">
+              <Link 
+                to="/privacy-policy" 
+                className="text-neutral-400 hover:text-secondary-500 transition-colors text-sm"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                Privacy Policy
+              </Link>
+              <span className="text-neutral-500">•</span>
+              <Link 
+                to="/cookie-policy" 
+                className="text-neutral-400 hover:text-secondary-500 transition-colors text-sm"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                Cookie Policy
+              </Link>
+              <span className="text-neutral-500">•</span>
+              <Link 
+                to="/terms-of-service" 
+                className="text-neutral-400 hover:text-secondary-500 transition-colors text-sm"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
       </div>

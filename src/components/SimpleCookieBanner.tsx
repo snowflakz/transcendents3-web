@@ -87,6 +87,9 @@ const SimpleCookieBanner: React.FC = () => {
             
             <Link
               to="/cookie-policy"
+              onClick={() => {
+                setIsVisible(false); // Close the cookie banner when navigating
+              }}
               className="flex-1 bg-neutral-800 hover:bg-neutral-900 text-white font-medium py-2 px-3 rounded-md transition-colors text-sm text-center"
             >
               View preferences

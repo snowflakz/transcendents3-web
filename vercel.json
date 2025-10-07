@@ -1,4 +1,6 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "rewrites": [
     {
       "source": "/((?!sitemap\\.xml|robots\\.txt|favicon\\.ico|.*\\.(png|jpg|jpeg|gif|svg|css|js|ico|webp|woff|woff2|ttf|eot|xml)).*)",
@@ -16,6 +18,15 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain"
         }
       ]
     }

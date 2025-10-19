@@ -150,7 +150,7 @@ const Services: React.FC = () => {
             <p className="text-lg text-neutral-200 mb-8">
               Contact us today to schedule a free consultation and discover how our financial services can help your business thrive.
             </p>
-            <Button variant="secondary" size="lg" href="/contact">
+            <Button variant="secondary" size="lg" href="https://api.leadconnectorhq.com/widget/booking/AUD6nSuWgvENGo1b8v4z" external={true}>
               Schedule a Free Consultation
             </Button>
           </div>

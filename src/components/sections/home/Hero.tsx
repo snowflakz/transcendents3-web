@@ -63,6 +63,33 @@ const Hero: React.FC = () => {
     }
 
     try {
+      // Send email to specified addresses
+      const emailData = {
+        to: ['tywoferj@gmail.com', 'tayoumosen@gmail.com'],
+        subject: 'New Free Assessment Request',
+        html: `
+          <h2>New Free Assessment Request</h2>
+          <p><strong>Name:</strong> ${formData.name}</p>
+          <p><strong>Email:</strong> ${formData.email}</p>
+          <p><strong>Phone:</strong> ${formData.phone}</p>
+          <p><strong>Business Type:</strong> ${formData.business}</p>
+          <p><strong>Submitted:</strong> ${new Date().toLocaleString()}</p>
+        `,
+        text: `
+          New Free Assessment Request
+          
+          Name: ${formData.name}
+          Email: ${formData.email}
+          Phone: ${formData.phone}
+          Business Type: ${formData.business}
+          Submitted: ${new Date().toLocaleString()}
+        `
+      };
+
+      // For now, we'll simulate the email sending
+      // In a real implementation, you would integrate with an email service like EmailJS, SendGrid, or similar
+      console.log('Email data to be sent:', emailData);
+      
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       
@@ -120,7 +147,8 @@ const Hero: React.FC = () => {
               <Button 
                 variant="secondary" 
                 size="lg" 
-                href="/contact"
+                href="https://api.leadconnectorhq.com/widget/booking/AUD6nSuWgvENGo1b8v4z"
+                external={true}
               >
                 Schedule a Free Consultation
               </Button>

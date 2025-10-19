@@ -221,7 +221,7 @@ const Header: React.FC = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button variant="primary" size="md" href="/contact">
+            <Button variant="primary" size="md" href="https://api.leadconnectorhq.com/widget/booking/AUD6nSuWgvENGo1b8v4z" external={true}>
               Free Consultation
             </Button>
           </div>
@@ -316,7 +316,7 @@ const Header: React.FC = () => {
               </React.Fragment>
             ))}
             <div className="px-4 py-3 border-t border-neutral-100">
-              <Button variant="primary" size="sm" fullWidth href="/contact">
+              <Button variant="primary" size="sm" fullWidth href="https://api.leadconnectorhq.com/widget/booking/AUD6nSuWgvENGo1b8v4z" external={true}>
                 Free Consultation
               </Button>
             </div>

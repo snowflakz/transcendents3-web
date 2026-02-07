@@ -1,85 +1,48 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SectionHeading from '../components/ui/SectionHeading';
-import { BookOpen, DollarSign, FileText, LineChart, BarChart4, Laptop, CheckCircle } from 'lucide-react';
+import { BookOpen, DollarSign, Laptop, LineChart, ArrowRight } from 'lucide-react';
 import Button from '../components/ui/Button';
+import { CALENDLY_CONSULTATION_URL } from '../constants';
 
 const Services: React.FC = () => {
   const services = [
     {
-      id: "bookkeeping",
-      icon: <BookOpen size={32} className="text-secondary-500" />,
-      title: "Bookkeeping",
-      description: "Keep your financial records accurate, up-to-date, and organized with our comprehensive bookkeeping services.",
-      features: [
-        "Monthly financial statement preparation",
-        "Accounts payable and receivable management",
-        "Bank and credit card reconciliation",
-        "Financial record organization and maintenance",
-        "General ledger maintenance",
-        "Chart of accounts setup and management"
-      ]
+      id: 'bookkeeping',
+      icon: <BookOpen size={40} className="text-secondary-500" />,
+      title: 'Bookkeeping',
+      description: 'Accurate, organized books that keep your business compliant and ready for growth. Monthly statements, reconciliations, and tax-ready reports.',
+      path: '/services/bookkeeping',
+      image: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=600',
     },
     {
-      id: "payroll",
-      icon: <DollarSign size={32} className="text-secondary-500" />,
-      title: "Payroll",
-      description: "Ensure your employees are paid accurately and on time while maintaining compliance with tax regulations.",
-      features: [
-        "Payroll processing and direct deposit",
-        "Tax withholding and reporting",
-        "Year-end W-2 and 1099 preparation",
-        "Payroll tax filing",
-        "Employee benefits administration",
-        "Time and attendance tracking integration"
-      ]
+      id: 'payroll',
+      icon: <DollarSign size={40} className="text-secondary-500" />,
+      title: 'Payroll',
+      description: 'On-time paychecks, proper tax withholding, and zero compliance headaches. W-2s, 1099s, and payroll tax filing done right.',
+      path: '/services/payroll',
+      image: 'https://images.pexels.com/photos/7821906/pexels-photo-7821906.jpeg?auto=compress&cs=tinysrgb&w=600',
     },
     {
-      id: "quickbooks-cleanup",
-      icon: <Laptop size={32} className="text-secondary-500" />,
-      title: "QuickBooks (QBO) Cleanup",
-      description: "Professional QuickBooks Online file cleanup and optimization for accurate, reliable financials.",
-      features: [
-        "QuickBooks Online file review and cleanup",
-        "Error correction and troubleshooting",
-        "Chart of accounts optimization",
-        "Duplicate transaction removal",
-        "Historical data reconciliation",
-        "Custom report setup"
-      ]
+      id: 'quickbooks-cleanup',
+      icon: <Laptop size={40} className="text-secondary-500" />,
+      title: 'QuickBooks (QBO) Cleanup',
+      description: 'Messy QuickBooks? We clean it up. Error correction, chart optimization, and reports you can trust. Certified ProAdvisors.',
+      path: '/services/quickbooks-cleanup',
+      image: 'https://images.pexels.com/photos/4475524/pexels-photo-4475524.jpeg?auto=compress&cs=tinysrgb&w=600',
     },
     {
-      id: "consulting",
-      icon: <LineChart size={32} className="text-secondary-500" />,
-      title: "Business Consulting",
-      description: "Get strategic advice to optimize your operations, improve profitability, and drive sustainable growth.",
-      features: [
-        "Business plan development",
-        "Cash flow forecasting and management",
-        "Budget preparation and analysis",
-        "Profit improvement strategies",
-        "Business process optimization",
-        "Financial risk assessment"
-      ]
+      id: 'consulting',
+      icon: <LineChart size={40} className="text-secondary-500" />,
+      title: 'Business Consulting',
+      description: 'Strategic financial guidance for growth. Cash flow forecasting, budgeting, profit improvement, and a partner who speaks your language.',
+      path: '/services/consulting',
+      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600',
     },
-    {
-      id: "quickbooks",
-      icon: <Laptop size={32} className="text-secondary-500" />,
-      title: "QuickBooks Support",
-      description: "Optimize your QuickBooks experience with our file repair, cleanup, and customization services.",
-      features: [
-        "QuickBooks setup and customization",
-        "File review and cleanup",
-        "Error correction and troubleshooting",
-        "Custom report creation",
-        "QuickBooks training for your team",
-        "Integration with other business systems"
-      ]
-    }
   ];
 
   return (
     <>
-      {/* Page Header */}
       <div className="bg-primary-800 py-20 md:py-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
@@ -93,55 +56,47 @@ const Services: React.FC = () => {
         </div>
       </div>
       
-      {/* Services Overview */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {services.map((service, index) => (
-            <div 
-              key={service.id} 
-              id={service.id}
-              className={`mb-24 ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'} scroll-mt-24`}
-            >
-              <div className="flex flex-col lg:flex-row gap-12 items-center">
-                {/* Image Column */}
-                <div className="lg:w-5/12 bg-neutral-100 rounded-xl overflow-hidden shadow-md h-64 lg:h-auto relative">
-                  <div className="absolute inset-0 flex items-center justify-center bg-primary-800/10">
-                    {service.icon}
-                  </div>
+          <SectionHeading
+            title="Explore Our Services"
+            subtitle="Each service is designed to address specific business needs. Click through to learn more."
+            centered
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            {services.map((service) => (
+              <Link
+                key={service.id}
+                to={service.path}
+                className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-                
-                {/* Content Column */}
-                <div className="lg:w-7/12">
-                  <div className="mb-6">
-                    <h2 className="text-3xl font-bold font-heading text-primary-800 mb-4">
-                      {service.title}
-                    </h2>
-                    <p className="text-lg text-neutral-600 mb-6">
-                      {service.description}
-                    </p>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
-                      {service.features.map((feature, fIndex) => (
-                        <div key={fIndex} className="flex items-start">
-                          <CheckCircle size={18} className="text-secondary-500 mr-2 flex-shrink-0 mt-0.5" />
-                          <span className="text-neutral-700">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <Button variant="primary" href="/contact" size="md">
-                      Get Started
-                    </Button>
-                  </div>
+                <div className="p-6">
+                  <div className="mb-4">{service.icon}</div>
+                  <h2 className="text-2xl font-bold font-heading text-primary-800 mb-3 group-hover:text-primary-600 transition-colors">
+                    {service.title}
+                  </h2>
+                  <p className="text-neutral-600 mb-4">
+                    {service.description}
+                  </p>
+                  <span className="inline-flex items-center text-primary-600 font-medium group-hover:text-primary-700">
+                    Learn More
+                    <ArrowRight size={18} className="ml-1 group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </div>
-              </div>
-            </div>
-          ))}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
       
-      {/* Call to Action */}
-      <section className="bg-primary-800 py-16">
+      <section className="py-16 bg-primary-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold font-heading text-white mb-6">
@@ -150,7 +105,7 @@ const Services: React.FC = () => {
             <p className="text-lg text-neutral-200 mb-8">
               Contact us today to schedule a free consultation and discover how our financial services can help your business thrive.
             </p>
-            <Button variant="secondary" size="lg" href="https://api.leadconnectorhq.com/widget/booking/AUD6nSuWgvENGo1b8v4z" external={true}>
+            <Button variant="secondary" size="lg" href={CALENDLY_CONSULTATION_URL} external={true}>
               Schedule a Free Consultation
             </Button>
           </div>

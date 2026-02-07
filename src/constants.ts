@@ -1,6 +1,8 @@
 /**
  * External URLs and config used across the application
  */
+export const SITE_URL = 'https://transcendents3.com';
+
 export const CALENDLY_CONSULTATION_URL =
   'https://calendly.com/transcendents3/15-minute-discovery-call';
 

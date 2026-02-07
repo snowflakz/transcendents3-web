@@ -2,6 +2,9 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import Button from '../components/ui/Button';
+import SocialShare from '../components/SocialShare';
+import SEO from '../components/SEO';
+import { CALENDLY_CONSULTATION_URL, SITE_URL } from '../constants';
 
 const blogPosts = [
   {
@@ -281,7 +284,127 @@ const blogPosts = [
         <div className="bg-secondary-50 p-6 rounded-lg my-8 text-center">
           <h3 className="text-xl font-bold text-primary-800 mb-2">Transform Your Business Today</h3>
           <p className="text-neutral-700 mb-4">Ready to experience the benefits of outsourcing? Let our team handle your financial operations so you can focus on what matters most.</p>
-          <Button variant="primary" size="lg" href="/contact">Start Your Outsourcing Journey</Button>
+          <Button variant="primary" size="lg" href={CALENDLY_CONSULTATION_URL} external={true}>Start Your Outsourcing Journey</Button>
+        </div>
+      </>
+    ),
+  },
+  {
+    id: '7',
+    title: "The $47,000 Mistake: A Texas Restaurant Owner's Bookkeeping Nightmare (And How You Can Avoid It)",
+    date: 'December 10, 2024',
+    author: 'Michael Rodriguez',
+    imageSrc: 'https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    content: (
+      <>
+        <p className="text-lg text-neutral-700 mb-6">Meet Carlos. He runs a beloved BBQ joint in Houston—the kind of place where the brisket melts in your mouth and the line wraps around the block on weekends. After 8 years of blood, sweat, and sauce stains, he was finally turning a solid profit. Then came the IRS letter. The one that made his stomach drop faster than a poorly flipped pancake.</p>
+        
+        <p className="text-neutral-700 mb-6">$47,000. That's what Carlos owed in back taxes, penalties, and interest. Not because he was dodging payments—but because a simple bookkeeping oversight had snowballed into a financial nightmare. His story is more common than you'd think. And the good news? It's entirely preventable.</p>
+
+        <h2 className="text-2xl font-bold text-primary-800 mt-8 mb-4">The Mistake That Cost a Fortune</h2>
+        <p className="text-neutral-700 mb-4">Carlos had been mixing personal and business expenses in the same account. A tank of gas for the family minivan? Same card as the propane for the smokers. His daughter's soccer cleats? Right next to the invoice for industrial kitchen equipment. Sounds harmless, right? Wrong.</p>
+        <p className="text-neutral-700 mb-4">When tax time came, his "bookkeeper" (a well-meaning cousin who'd taken a QuickBooks class) couldn't untangle the mess. Deductions were missed. Expenses were misclassified. The IRS, doing a routine audit of restaurant businesses in the area, found discrepancies. What started as a $12,000 oversight ballooned to $47,000 with penalties and interest.</p>
+
+        <blockquote className="border-l-4 border-secondary-500 pl-6 py-2 my-6 italic text-neutral-700 bg-neutral-50">"I thought I was saving money by doing it myself. I learned the hard way that a good book keeper pays for themselves ten times over." — Carlos M., Houston, TX</blockquote>
+
+        <div className="bg-primary-50 p-6 rounded-lg my-8 text-center">
+          <h3 className="text-xl font-bold text-primary-800 mb-2">Could Your Books Use a Second Look?</h3>
+          <p className="text-neutral-700 mb-4">Don't wait for a letter. Our Texas book keepers offer free assessments to catch issues before they become expensive. No judgment—just solutions.</p>
+          <Button variant="secondary" size="lg" href={CALENDLY_CONSULTATION_URL} external={true}>Book a Free 15-Min Assessment</Button>
+        </div>
+
+        <h2 className="text-2xl font-bold text-primary-800 mt-8 mb-4">Three More Real-Life Blunders (And How to Dodge Them)</h2>
+        
+        <h3 className="text-xl font-semibold text-primary-800 mt-6 mb-3">The Austin Tech Startup: The Emoji Invoice</h3>
+        <p className="text-neutral-700 mb-4">A SaaS founder in Austin sent clients invoices with "Please pay when you can 😊" instead of net-30 terms. Result? Average payment time: 67 days. She was literally funding her clients' operations out of her own pocket. A simple accounts receivable review would have caught this—and freed up $80,000 in trapped cash.</p>
+
+        <h3 className="text-xl font-semibold text-primary-800 mt-6 mb-3">The Dallas Contractor: The Van That Vanished</h3>
+        <p className="text-neutral-700 mb-4">A roofing contractor deducted his work truck—which he also used for weekend fishing trips—at 100%. The IRS noticed the odometer didn't match "business use only." He had to repay $14,000 in disallowed deductions plus penalties. Mileage logs and proper allocation? Problem solved.</p>
+
+        <h3 className="text-xl font-semibold text-primary-800 mt-6 mb-3">The San Antonio Salon: Payroll Time Bomb</h3>
+        <p className="text-neutral-700 mb-4">A salon owner classified her stylists as contractors to "save on payroll taxes." The state labor board disagreed. Back wages, penalties, and legal fees: $31,000. Worker classification isn't a gray area—it's a minefield. Get it right from day one.</p>
+
+        <div className="bg-secondary-50 p-6 rounded-lg my-8 text-center">
+          <h3 className="text-xl font-bold text-primary-800 mb-2">The Fix Is Simpler Than You Think</h3>
+          <p className="text-neutral-700 mb-4">Separate bank accounts. Clean expense tracking. A qualified book keeper who speaks your language. These aren't luxuries—they're business survival tools. Thousands of Texas business owners have gotten their books back on track. You can too.</p>
+          <Button variant="primary" size="lg" href={CALENDLY_CONSULTATION_URL} external={true}>Schedule Your Free Consultation</Button>
+        </div>
+
+        <h2 className="text-2xl font-bold text-primary-800 mt-8 mb-4">Your Action Checklist (Copy This)</h2>
+        <ul className="list-disc pl-6 mb-6 text-neutral-700 space-y-2">
+          <li><strong>Separate accounts:</strong> One for business, one for personal. No exceptions.</li>
+          <li><strong>Track every dollar:</strong> Use QuickBooks or similar—and actually categorize transactions.</li>
+          <li><strong>Reconcile monthly:</strong> Don't let it pile up until tax season.</li>
+          <li><strong>Get a pro review:</strong> Even if you do your own books, have a book keeper audit annually.</li>
+        </ul>
+
+        <p className="text-neutral-700 mb-6">Carlos got his books fixed. He's back to focusing on what he does best—smoking meat and making people happy. The $47,000 lesson? He says it was the best investment he never wanted to make. Don't wait for your own costly wake-up call.</p>
+
+        <div className="bg-primary-50 p-6 rounded-lg my-8 text-center">
+          <h3 className="text-xl font-bold text-primary-800 mb-2">Ready to Sleep Better at Night?</h3>
+          <p className="text-neutral-700 mb-4">Our certified book keepers across Texas and the USA help business owners like Carlos (and you) avoid the pitfalls. Free 15-minute consultation. No pressure. Just clarity.</p>
+          <Button variant="secondary" size="lg" href={CALENDLY_CONSULTATION_URL} external={true}>Get Your Free Bookkeeping Assessment</Button>
+        </div>
+      </>
+    ),
+  },
+  {
+    id: '8',
+    title: "The $80,000 That Was Sitting in a Dallas Inbox: How One Freelancer Unlocked Her Trapped Cash",
+    date: 'January 15, 2025',
+    author: 'Sarah Chen',
+    description: 'A Dallas marketing consultant recovered $80K in trapped receivables. Learn how to fix cash flow, speed up payments, and stop funding your clients. Real stories from Texas business owners.',
+    imageSrc: 'https://images.pexels.com/photos/7567743/pexels-photo-7567743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    content: (
+      <>
+        <p className="text-lg text-neutral-700 mb-6">Meet Priya. She runs a thriving marketing consultancy in Dallas—the kind where clients rave about her work and her calendar is booked months ahead. She had six figures in "revenue" on paper. So why was she putting business expenses on her personal credit card and losing sleep at 2 AM? The answer was hiding in her inbox. Eighty thousand dollars in unpaid invoices. And she hadn't even noticed.</p>
+        
+        <p className="text-neutral-700 mb-6">Priya's story isn't rare. In fact, 60% of small businesses in the US struggle with late payments. The average wait? 67 days. That means you're essentially giving your clients an interest-free loan—while you scramble to make payroll. One simple change transformed Priya's business. Here's how she did it—and how you can do the same.</p>
+
+        <h2 className="text-2xl font-bold text-primary-800 mt-8 mb-4">The "Nice Girl" Invoice Problem</h2>
+        <p className="text-neutral-700 mb-4">Priya sent invoices with phrases like "Payment due when convenient" and "No rush—thanks for your business!" She thought she was being professional. She was actually teaching her clients that her time wasn't valuable. A Fortune 500 client once paid her 94 days late—with zero apology. She'd already done the work. She'd already paid her contractors. She was funding their marketing budget out of her own pocket.</p>
+        <p className="text-neutral-700 mb-4">When she finally ran an aging report (something her book keeper suggested during a free consultation), her jaw dropped. $80,000. Sitting in "net 60" or "net 90" purgatory. Some invoices were so old they'd forgotten to follow up.</p>
+
+        <blockquote className="border-l-4 border-secondary-500 pl-6 py-2 my-6 italic text-neutral-700 bg-neutral-50">"I thought being flexible would win loyalty. Turns out, clear terms and consistent follow-up win respect—and get you paid." — Priya K., Dallas, TX</blockquote>
+
+        <div className="bg-primary-50 p-6 rounded-lg my-8 text-center">
+          <h3 className="text-xl font-bold text-primary-800 mb-2">Is Cash Trapped in Your Receivables?</h3>
+          <p className="text-neutral-700 mb-4">A free accounts receivable review can reveal exactly how much you're waiting on—and how to get it faster. Our Texas book keepers help freelancers and small businesses tighten their cash flow.</p>
+          <Button variant="secondary" size="lg" href={CALENDLY_CONSULTATION_URL} external={true}>Get a Free Cash Flow Review</Button>
+        </div>
+
+        <h2 className="text-2xl font-bold text-primary-800 mt-8 mb-4">Three More Real-Life Cash Flow Wins</h2>
+        
+        <h3 className="text-xl font-semibold text-primary-800 mt-6 mb-3">The Fort Worth E-commerce Seller: The Inventory Trap</h3>
+        <p className="text-neutral-700 mb-4">Marcus had $45,000 tied up in inventory he'd ordered "for the season." The season passed. The inventory didn't. A quick cash flow forecast would have shown him he was overstocked—and freed up that capital for ads that actually sold. He learned to order in smaller batches and watch his inventory turnover. Result? 40% less cash tied up, 25% more profit.</p>
+
+        <h3 className="text-xl font-semibold text-primary-800 mt-6 mb-3">The Houston Contractor: The Growth Paradox</h3>
+        <p className="text-neutral-700 mb-4">Jose's construction company was growing fast—and running out of cash. He was winning bigger jobs but needed to pay subs and materials before clients paid him. Classic growth trap. A cash flow projection and a line of credit strategy changed everything. He now knows exactly when he'll need a bridge and plans for it—instead of panicking at payroll.</p>
+
+        <h3 className="text-xl font-semibold text-primary-800 mt-6 mb-3">The Austin SaaS Founder: The Subscription Surprise</h3>
+        <p className="text-neutral-700 mb-4">Emily thought recurring revenue meant predictable cash flow. She was wrong. Annual contracts paid upfront created huge spikes—and troughs. Monthly churn of 3% felt small until she modeled it over 12 months. A proper cash flow forecast revealed she'd run short in Q3. She adjusted her pricing, nailed retention, and never looked back.</p>
+
+        <div className="bg-secondary-50 p-6 rounded-lg my-8 text-center">
+          <h3 className="text-xl font-bold text-primary-800 mb-2">Take Control of Your Cash Flow</h3>
+          <p className="text-neutral-700 mb-4">Whether you're a freelancer, contractor, or scaling business—cash flow is the oxygen of your company. Our team helps Texas and USA business owners see clearly, plan ahead, and stop leaving money on the table.</p>
+          <Button variant="primary" size="lg" href={CALENDLY_CONSULTATION_URL} external={true}>Book Your Free Consultation</Button>
+        </div>
+
+        <h2 className="text-2xl font-bold text-primary-800 mt-8 mb-4">Your Cash Flow Checklist (Steal This)</h2>
+        <ul className="list-disc pl-6 mb-6 text-neutral-700 space-y-2">
+          <li><strong>Run an aging report monthly:</strong> Know exactly who owes you what—and for how long.</li>
+          <li><strong>Set clear payment terms:</strong> Net 15 or Net 30. No "when convenient."</li>
+          <li><strong>Send reminders at 7, 14, and 21 days:</strong> Automated is fine. Consistency is key.</li>
+          <li><strong>Forecast 3 months ahead:</strong> See cash shortfalls before they become crises.</li>
+          <li><strong>Get a pro review:</strong> A book keeper can spot patterns you're too close to see.</li>
+        </ul>
+
+        <p className="text-neutral-700 mb-6">Priya recovered $80,000 in 90 days. She changed her invoice terms, implemented automated reminders, and now gets paid in 18 days on average. She sleeps better. She invests in her business. She stopped floating her clients. You can do the same. The first step? Knowing where your cash actually is.</p>
+
+        <div className="bg-primary-50 p-6 rounded-lg my-8 text-center">
+          <h3 className="text-xl font-bold text-primary-800 mb-2">Ready to Unlock Your Trapped Cash?</h3>
+          <p className="text-neutral-700 mb-4">Our certified book keepers help freelancers and business owners across Texas and the USA optimize receivables, forecast cash flow, and keep more of what they earn. Free 15-minute consultation—no strings attached.</p>
+          <Button variant="secondary" size="lg" href={CALENDLY_CONSULTATION_URL} external={true}>Schedule Free Cash Flow Review</Button>
         </div>
       </>
     ),
@@ -302,17 +425,32 @@ const BlogDetail: React.FC = () => {
     );
   }
 
+  const shareUrl = typeof window !== 'undefined' ? window.location.href : `${SITE_URL}/blog/${post.id}`;
+
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">
+      <SEO
+        title={`${post.title} | Transcendents3 Blog`}
+        description={(post as { description?: string }).description || `${post.title} - Expert insights from Transcendents3. Book keeper Texas & USA.`}
+        keywords="book keeper Texas, bookkeeper USA, small business accounting, bookkeeping tips, tax planning, cash flow, accounts receivable"
+      />
       <Link to="/blog" className="text-primary-600 hover:underline mb-6 inline-block">&larr; Back to Blog</Link>
       <h1 className="text-4xl font-bold font-heading text-primary-800 mb-4">{post.title}</h1>
-      <div className="flex items-center text-neutral-500 text-sm mb-6">
+      <div className="flex flex-wrap items-center gap-4 text-neutral-500 text-sm mb-6">
         <span>{post.date}</span>
-        <span className="mx-2">|</span>
+        <span className="hidden sm:inline">|</span>
         <span>By {post.author}</span>
+        <SocialShare url={shareUrl} title={post.title} description={post.title} className="ml-auto" />
       </div>
       <img src={post.imageSrc} alt={post.title} className="rounded-lg shadow-md mb-8 w-full h-72 object-cover" />
       <div className="prose prose-lg max-w-none mb-12">{post.content}</div>
+      
+      {/* Social Share - Bottom */}
+      <div className="border-t border-neutral-200 pt-8 pb-8 mb-8 bg-neutral-50 rounded-lg px-6">
+        <h3 className="text-lg font-semibold text-primary-800 mb-4">Share this article</h3>
+        <p className="text-neutral-600 text-sm mb-4">Found this helpful? Share it with other business owners who could benefit.</p>
+        <SocialShare url={shareUrl} title={post.title} description={(post as { description?: string }).description || post.title} />
+      </div>
       
       {/* Bottom Navigation */}
       <div className="flex justify-between items-center mb-8">
@@ -321,8 +459,8 @@ const BlogDetail: React.FC = () => {
           Back to Blog
         </Link>
         <div className="flex space-x-4">
-          <Button variant="outline" size="sm" href="/contact">
-            Contact Us
+          <Button variant="outline" size="sm" href={CALENDLY_CONSULTATION_URL} external={true}>
+            Book Consultation
           </Button>
           <Button variant="secondary" size="sm" href="/services">
             Our Services
@@ -333,7 +471,7 @@ const BlogDetail: React.FC = () => {
       <div className="bg-primary-50 p-6 rounded-lg text-center">
         <h2 className="text-2xl font-bold text-primary-800 mb-2">Ready to take the next step?</h2>
         <p className="mb-4 text-neutral-700">Contact us today for a personalized consultation and discover how we can help your business thrive.</p>
-        <Button variant="secondary" size="lg" href="/contact">Contact Us</Button>
+        <Button variant="secondary" size="lg" href={CALENDLY_CONSULTATION_URL} external={true}>Book Free Consultation</Button>
       </div>
     </div>
   );

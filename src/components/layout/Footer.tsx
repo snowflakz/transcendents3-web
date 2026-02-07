@@ -68,11 +68,10 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-heading font-semibold mb-4">Our Services</h3>
             <ul className="space-y-2">
               {[
-                { name: 'Bookkeeping', path: '/services#bookkeeping' },
-                { name: 'Payroll', path: '/services#payroll' },
-                { name: 'QuickBooks (QBO) Cleanup', path: '/services#quickbooks-cleanup' },
-                { name: 'Business Consulting', path: '/services#consulting' },
-                { name: 'QuickBooks Support', path: '/services#quickbooks' },
+                { name: 'Bookkeeping', path: '/services/bookkeeping' },
+                { name: 'Payroll', path: '/services/payroll' },
+                { name: 'QuickBooks (QBO) Cleanup', path: '/services/quickbooks-cleanup' },
+                { name: 'Business Consulting', path: '/services/consulting' },
               ].map((service) => (
                 <li key={service.name}>
                   <button

@@ -2,6 +2,7 @@ import React from 'react';
 import { Search, Calendar, User, ArrowRight } from 'lucide-react';
 import Button from '../components/ui/Button';
 import { Link } from 'react-router-dom';
+import { CALENDLY_CONSULTATION_URL } from '../constants';
 
 const Blog: React.FC = () => {
   const blogPosts = [
@@ -58,6 +59,24 @@ const Blog: React.FC = () => {
       date: "February 18, 2023",
       category: "Business Strategy",
       imageSrc: "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+      id: 7,
+      title: "The $47,000 Mistake: A Texas Restaurant Owner's Bookkeeping Nightmare (And How You Can Avoid It)",
+      excerpt: "A real-life story from Houston that will make you rethink your bookkeeping. One small oversight cost a thriving BBQ joint nearly fifty grand—here's what went wrong and how to protect your business.",
+      author: "Michael Rodriguez",
+      date: "December 10, 2024",
+      category: "Bookkeeping",
+      imageSrc: "https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+      id: 8,
+      title: "The $80,000 That Was Sitting in a Dallas Inbox: How One Freelancer Unlocked Her Trapped Cash",
+      excerpt: "A Dallas marketing consultant had 67 days of unpaid invoices—and no idea she was essentially funding her clients' businesses. Here's how she recovered $80K and transformed her cash flow forever.",
+      author: "Sarah Chen",
+      date: "January 15, 2025",
+      category: "Financial Management",
+      imageSrc: "https://images.pexels.com/photos/7567743/pexels-photo-7567743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     },
   ];
 
@@ -286,7 +305,7 @@ const Blog: React.FC = () => {
             <p className="text-lg text-neutral-200 mb-8">
               Our team of financial experts is ready to help you solve your specific challenges.
             </p>
-            <Button variant="secondary" size="lg" href="https://api.leadconnectorhq.com/widget/booking/AUD6nSuWgvENGo1b8v4z" external={true}>
+            <Button variant="secondary" size="lg" href={CALENDLY_CONSULTATION_URL} external={true}>
               Schedule a Free Consultation
             </Button>
           </div>

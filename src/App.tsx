@@ -4,6 +4,10 @@ import Layout from './components/layout/Layout';
 import { NotificationProvider } from './components/ui/NotificationProvider';
 import Home from './pages/Home';
 import Services from './pages/Services';
+import ServiceBookkeeping from './pages/ServiceBookkeeping';
+import ServicePayroll from './pages/ServicePayroll';
+import ServiceQuickBooksCleanup from './pages/ServiceQuickBooksCleanup';
+import ServiceConsulting from './pages/ServiceConsulting';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
@@ -27,6 +31,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/bookkeeping" element={<ServiceBookkeeping />} />
+            <Route path="/services/payroll" element={<ServicePayroll />} />
+            <Route path="/services/quickbooks-cleanup" element={<ServiceQuickBooksCleanup />} />
+            <Route path="/services/consulting" element={<ServiceConsulting />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />

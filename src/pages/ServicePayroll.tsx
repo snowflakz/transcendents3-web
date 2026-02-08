@@ -36,7 +36,7 @@ const ServicePayroll: React.FC = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
-                <img src="https://images.pexels.com/photos/7821906/pexels-photo-7821906.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Payroll processing" className="rounded-2xl shadow-xl" />
+                <img src="https://images.pexels.com/photos/7821906/pexels-photo-7821906.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Payroll processing" className="rounded-2xl shadow-xl" loading="lazy" />
               </div>
               <div>
                 <h2 className="text-3xl font-bold text-primary-800 mb-6">Why Payroll Compliance Matters</h2>
@@ -90,7 +90,7 @@ const ServicePayroll: React.FC = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
-                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team collaboration" className="rounded-2xl shadow-xl" />
+                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team collaboration" className="rounded-2xl shadow-xl" loading="lazy" />
               </div>
               <div>
                 <h2 className="text-3xl font-bold text-primary-800 mb-6">The Value of Outsourced Payroll</h2>

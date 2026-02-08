@@ -66,8 +66,11 @@ const FAQ: React.FC = () => {
   return (
     <>
       {/* Page Header */}
-      <div className="bg-primary-800 py-20 md:py-28">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-primary-800 overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <img src="https://images.pexels.com/photos/3760139/pexels-photo-3760139.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="" className="w-full h-full object-cover" />
+        </div>
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold font-heading text-white mb-6">
               Frequently Asked Questions
@@ -78,9 +81,25 @@ const FAQ: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Intro with image */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+            <div>
+              <img src="https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional support and answers" className="rounded-2xl shadow-xl" loading="lazy" />
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-primary-800 mb-6">We&apos;re Here to Help</h2>
+              <p className="text-neutral-700 mb-4">Whether you&apos;re new to our services or a long-time client, we want to make sure you have the information you need. Below are answers to the questions we hear most often.</p>
+              <p className="text-neutral-700">Can&apos;t find what you&apos;re looking for? Reach out to us at info@transcendents3.com or call +1 (540) 929 9002.</p>
+            </div>
+          </div>
+        </div>
+      </section>
       
       {/* FAQ Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-0 md:py-12 -mt-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
             {faqs.map((faq, idx) => {
@@ -112,6 +131,24 @@ const FAQ: React.FC = () => {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA with image */}
+      <section className="py-16 md:py-24 bg-primary-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="order-2 lg:order-1">
+              <h2 className="text-3xl font-bold text-primary-800 mb-6">Still Have Questions?</h2>
+              <p className="text-neutral-700 mb-6">Schedule a free 15-minute consultation with our team. We&apos;ll listen to your needs and help you find the right solutions.</p>
+              <a href="https://calendly.com/transcendents3/15-minute-discovery-call" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-6 py-3 bg-primary-800 text-white rounded-lg hover:bg-primary-900 font-medium transition-colors">
+                Book Free Consultation
+              </a>
+            </div>
+            <div className="order-1 lg:order-2">
+              <img src="https://images.pexels.com/photos/3183192/pexels-photo-3183192.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Schedule a consultation" className="rounded-2xl shadow-xl" loading="lazy" />
+            </div>
           </div>
         </div>
       </section>

@@ -36,7 +36,7 @@ const ServiceQuickBooksCleanup: React.FC = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
-                <img src="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800" alt="QuickBooks on laptop" className="rounded-2xl shadow-xl" />
+                <img src="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800" alt="QuickBooks on laptop" className="rounded-2xl shadow-xl" loading="lazy" />
               </div>
               <div>
                 <h2 className="text-3xl font-bold text-primary-800 mb-6">Why QuickBooks Cleanup Matters</h2>
@@ -90,7 +90,7 @@ const ServiceQuickBooksCleanup: React.FC = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
-                <img src="https://images.pexels.com/photos/6801647/pexels-photo-6801647.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Financial reports" className="rounded-2xl shadow-xl" />
+                <img src="https://images.pexels.com/photos/6801647/pexels-photo-6801647.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Financial reports" className="rounded-2xl shadow-xl" loading="lazy" />
               </div>
               <div>
                 <h2 className="text-3xl font-bold text-primary-800 mb-6">The Value of Clean Books</h2>

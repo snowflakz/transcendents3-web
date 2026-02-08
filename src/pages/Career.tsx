@@ -99,8 +99,11 @@ const Career: React.FC = () => {
       />
       <div className="min-h-screen bg-neutral-50">
         {/* Hero */}
-        <section className="bg-primary-800 py-16 md:py-24">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative bg-primary-800 overflow-hidden">
+          <div className="absolute inset-0 opacity-30">
+            <img src="https://images.pexels.com/photos/2592394/pexels-photo-2592394.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="" className="w-full h-full object-cover" />
+        </div>
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
             <div className="max-w-3xl">
               <h1 className="text-4xl md:text-5xl font-bold font-heading text-white mb-6">
                 Careers at Transcendents3
@@ -112,8 +115,24 @@ const Career: React.FC = () => {
           </div>
         </section>
 
-        {/* Open Positions */}
+        {/* Intro with image */}
         <section className="py-16 md:py-24">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <img src="https://images.pexels.com/photos/5716008/pexels-photo-5716008.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team collaborating in office" className="rounded-2xl shadow-xl" loading="lazy" />
+              </div>
+              <div>
+                <h2 className="text-3xl font-bold text-primary-800 mb-6">Build Your Career With Us</h2>
+                <p className="text-neutral-700 mb-4">At Transcendents3, we believe in nurturing talent and rewarding excellence. Our team members enjoy flexible work arrangements, ongoing development, and the opportunity to work with diverse clients across Texas and beyond.</p>
+                <p className="text-neutral-700">Whether you&apos;re an experienced bookkeeper, a tax professional, or a QuickBooks specialist, we have a place for you.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Open Positions */}
+        <section className="py-16 md:py-24 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl md:text-3xl font-bold text-primary-800 mb-10">Open Positions</h2>
             <div className="space-y-4">
@@ -190,9 +209,13 @@ const Career: React.FC = () => {
         </section>
 
         {/* Application Form */}
-        <section id="apply-form" className="py-16 md:py-24 bg-white">
+        <section id="apply-form" className="py-16 md:py-24 bg-neutral-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 items-start">
+              <div>
+                <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional workspace for job applications" className="rounded-2xl shadow-xl" loading="lazy" />
+              </div>
+              <div>
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
                   <Upload className="w-6 h-6 text-primary-600" />
@@ -282,6 +305,7 @@ const Career: React.FC = () => {
               <p className="mt-4 text-sm text-neutral-500">
                 By submitting, you consent to us storing your application details. CVs are retained for recruitment purposes.
               </p>
+            </div>
             </div>
           </div>
         </section>

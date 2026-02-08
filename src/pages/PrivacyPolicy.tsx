@@ -1,7 +1,13 @@
 import React from 'react';
+import SEO from '../components/SEO';
 
 const PrivacyPolicy: React.FC = () => (
   <>
+    <SEO
+      title="Privacy Policy | Transcendents3"
+      description="Learn how Transcendents3 protects your privacy and handles your personal and financial information."
+      keywords="privacy policy, Transcendents3, data protection, bookkeeping privacy"
+    />
     {/* Page Header */}
     <div className="bg-primary-800 py-20 md:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,7 +26,7 @@ const PrivacyPolicy: React.FC = () => (
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl font-bold font-heading text-primary-800 mb-8">Privacy Policy</h1>
-          <p className="mb-6 text-neutral-700">Last updated: {new Date().toLocaleDateString()}</p>
+          <p className="mb-6 text-neutral-700">Last updated: February 8, 2025</p>
           <p className="mb-6 text-neutral-700">
             At Transcendents3, we are committed to protecting your privacy and ensuring the security of your personal and financial information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website and services, including bookkeeping, payroll, QuickBooks (QBO) cleanup, business consulting, and related financial solutions.
           </p>
@@ -29,7 +35,7 @@ const PrivacyPolicy: React.FC = () => (
             <li><strong>Personal Information:</strong> Name, email address, phone number, business name, address, and other contact details you provide when you fill out forms or communicate with us.</li>
             <li><strong>Financial Information:</strong> Accounting records, payroll data, QuickBooks files, and other financial documents you share for our services.</li>
             <li><strong>Usage Data:</strong> Information about how you interact with our website, such as IP address, browser type, device information, pages visited, and referring URLs.</li>
-            <li><strong>Cookies & Tracking:</strong> We use cookies and similar technologies to enhance your experience, analyze site usage, and improve our services.</li>
+            <li><strong>Cookies & Tracking:</strong> We use cookies and similar technologies to enhance your experience, analyze site usage, and improve our services. We may use third-party services such as Google Analytics and chat widgets; these services have their own privacy policies governing data collection.</li>
           </ul>
           <h2 className="text-2xl font-semibold text-primary-700 mt-8 mb-4">2. How We Use Your Information</h2>
           <ul className="list-disc pl-6 mb-6 text-neutral-700">

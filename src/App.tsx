@@ -1,33 +1,44 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import { NotificationProvider } from './components/ui/NotificationProvider';
-import Home from './pages/Home';
-import Services from './pages/Services';
-import ServiceBookkeeping from './pages/ServiceBookkeeping';
-import ServicePayroll from './pages/ServicePayroll';
-import ServiceQuickBooksCleanup from './pages/ServiceQuickBooksCleanup';
-import ServiceConsulting from './pages/ServiceConsulting';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Blog from './pages/Blog';
-import BlogDetail from './pages/BlogDetail';
-import FAQ from './pages/FAQ';
-import Resources from './pages/Resources';
-import WebinarsLanding from './pages/WebinarsLanding';
-import FinancialCalculator from './pages/FinancialCalculator';
-import QuickBooksGuides from './pages/QuickBooksGuides';
-import CookiePolicy from './pages/CookiePolicy';
-import NotFound from './pages/NotFound';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsOfService from './pages/TermsOfService';
-import Career from './pages/Career';
+
+const Home = lazy(() => import('./pages/Home'));
+const Services = lazy(() => import('./pages/Services'));
+const ServiceBookkeeping = lazy(() => import('./pages/ServiceBookkeeping'));
+const ServicePayroll = lazy(() => import('./pages/ServicePayroll'));
+const ServiceQuickBooksCleanup = lazy(() => import('./pages/ServiceQuickBooksCleanup'));
+const ServiceConsulting = lazy(() => import('./pages/ServiceConsulting'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogDetail = lazy(() => import('./pages/BlogDetail'));
+const FAQ = lazy(() => import('./pages/FAQ'));
+const Resources = lazy(() => import('./pages/Resources'));
+const WebinarsLanding = lazy(() => import('./pages/WebinarsLanding'));
+const FinancialCalculator = lazy(() => import('./pages/FinancialCalculator'));
+const QuickBooksGuides = lazy(() => import('./pages/QuickBooksGuides'));
+const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsOfService = lazy(() => import('./pages/TermsOfService'));
+const Career = lazy(() => import('./pages/Career'));
+
+const PageLoader = () => (
+  <div className="min-h-[60vh] flex items-center justify-center">
+    <div className="animate-pulse flex flex-col items-center gap-4">
+      <div className="w-12 h-12 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin" />
+      <span className="text-neutral-600">Loading...</span>
+    </div>
+  </div>
+);
 
 function App() {
   return (
     <NotificationProvider>
       <Router>
         <Layout>
+          <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
@@ -50,6 +61,7 @@ function App() {
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          </Suspense>
         </Layout>
       </Router>
     </NotificationProvider>

@@ -25,8 +25,12 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: undefined,
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'lucide': ['lucide-react'],
+        },
       },
     },
+    chunkSizeWarningLimit: 600,
   },
 });

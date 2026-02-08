@@ -21,3 +21,6 @@ export const CAREER_EMAIL = 'transcendents3@gmail.com';
 
 /** Google Drive folder for CV storage (for reference - use Gmail/Apps Script to auto-save) */
 export const CV_DRIVE_FOLDER_URL = 'https://drive.google.com/drive/folders/1sIligpoGWrPaBuvfyHzpZX87gjtCQta7';
+
+/** eBook download link - The Small Business Bookkeeping Blueprint */
+export const EBOOK_DOWNLOAD_URL = 'https://drive.google.com/file/d/1_I6P-y58W9qEZ2Tec2u9KJYojqqNXgWk/view?usp=sharing';

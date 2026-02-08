@@ -36,7 +36,7 @@ const ServiceBookkeeping: React.FC = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
-                <img src="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional bookkeeping" className="rounded-2xl shadow-xl" />
+                <img src="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional bookkeeping" className="rounded-2xl shadow-xl" loading="lazy" />
               </div>
               <div>
                 <h2 className="text-3xl font-bold text-primary-800 mb-6">Why Bookkeeping Matters to Your Business</h2>
@@ -90,7 +90,7 @@ const ServiceBookkeeping: React.FC = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
-                <img src="https://images.pexels.com/photos/7550317/pexels-photo-7550317.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Business owner reviewing financials" className="rounded-2xl shadow-xl" />
+                <img src="https://images.pexels.com/photos/7550317/pexels-photo-7550317.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Business owner reviewing financials" className="rounded-2xl shadow-xl" loading="lazy" />
               </div>
               <div>
                 <h2 className="text-3xl font-bold text-primary-800 mb-6">The Value of Done-Right Bookkeeping</h2>

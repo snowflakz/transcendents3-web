@@ -3,7 +3,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://transcendents3.com/</loc>
-    <lastmod>2024-12-19</lastmod>
+    <lastmod>2025-02-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -110,6 +110,14 @@
   <url>
     <loc>https://transcendents3.com/resources/quickbooks-guides</loc>
     <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Careers -->
+  <url>
+    <loc>https://transcendents3.com/careers</loc>
+    <lastmod>2025-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

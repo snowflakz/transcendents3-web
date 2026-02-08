@@ -121,8 +121,11 @@ const Contact: React.FC = () => {
   return (
     <>
       {/* Page Header */}
-      <div className="bg-primary-800 py-20 md:py-28">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-primary-800 overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="" className="w-full h-full object-cover" />
+        </div>
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold font-heading text-white mb-6">
               Contact Us
@@ -133,13 +136,32 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Intro with image */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+            <div>
+              <img src="https://images.pexels.com/photos/3182800/pexels-photo-3182800.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Get in touch with our team" className="rounded-2xl shadow-xl" loading="lazy" />
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-primary-800 mb-6">Get in Touch</h2>
+              <p className="text-neutral-700 mb-4">Whether you need bookkeeping support, payroll help, QuickBooks cleanup, or a free consultation—we&apos;re here for you. Our team typically responds within 24 hours.</p>
+              <p className="text-neutral-700">Visit us at our Richmond, TX office or connect with us online. We look forward to hearing from you.</p>
+            </div>
+          </div>
+        </div>
+      </section>
       
       {/* Contact Information and Form */}
-      <section className="py-16 md:py-24">
+      <section className="py-0 md:py-12 -mt-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12">
             {/* Contact Information */}
             <div className="lg:w-1/3">
+              <div className="mb-8">
+                <img src="https://images.pexels.com/photos/3183173/pexels-photo-3183173.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Transcendents3 office - Richmond TX" className="rounded-xl shadow-lg w-full" loading="lazy" />
+              </div>
               <h2 className="text-2xl font-bold font-heading text-primary-800 mb-6">
                 Get in Touch
               </h2>

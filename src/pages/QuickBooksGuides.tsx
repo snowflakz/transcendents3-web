@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import SEO from '../components/SEO';
 import Button from '../components/ui/Button';
-import { CALENDLY_CONSULTATION_URL, FORM_SUBMIT_URL } from '../constants';
+import { CALENDLY_CONSULTATION_URL, EBOOK_DOWNLOAD_URL, FORM_SUBMIT_URL } from '../constants';
 import { BookOpen, Download, CheckCircle } from 'lucide-react';
 
 const QuickBooksGuides: React.FC = () => {
   const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -19,8 +20,9 @@ const QuickBooksGuides: React.FC = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          _subject: 'QuickBooks Guide Download - Transcendents3',
-          name: name || 'Not provided',
+          _subject: `${firstName || 'Someone'} has just downloaded your eBook`,
+          firstName: firstName || 'Not provided',
+          lastName: lastName || 'Not provided',
           email,
           _template: 'box',
           _captcha: 'false',
@@ -72,15 +74,29 @@ const QuickBooksGuides: React.FC = () => {
                       </div>
                     </div>
                     <form onSubmit={handleSubmit} className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-neutral-700 mb-1">Your Name</label>
-                        <input
-                          type="text"
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          placeholder="John Smith"
-                          className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500"
-                        />
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium text-neutral-700 mb-1">First Name *</label>
+                          <input
+                            type="text"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            placeholder="John"
+                            required
+                            className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-neutral-700 mb-1">Last Name *</label>
+                          <input
+                            type="text"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                            placeholder="Smith"
+                            required
+                            className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                          />
+                        </div>
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-neutral-700 mb-1">Email Address *</label>
@@ -99,20 +115,64 @@ const QuickBooksGuides: React.FC = () => {
                     </form>
                   </>
                 ) : (
-                  <div className="text-center py-8">
+                  <div className="py-8">
                     <CheckCircle className="h-16 w-16 text-secondary-500 mx-auto mb-4" />
-                    <h2 className="text-2xl font-bold text-primary-800 mb-2">Check Your Email!</h2>
-                    <p className="text-neutral-600 mb-6">
-                      We've sent your guide to {email}. Check your inbox (and spam folder).
-                    </p>
-                    <a
-                      href="/downloads/QuickBooks-Guide-Transcendents3.html"
-                      download="QuickBooks-Guide-Transcendents3.html"
-                      className="inline-flex items-center justify-center px-6 py-3 bg-secondary-500 text-white rounded-lg hover:bg-secondary-600 font-medium"
-                    >
-                      <Download className="w-5 h-5 mr-2" />
-                      Direct Download (Backup)
-                    </a>
+                    <h2 className="text-2xl font-bold text-primary-800 mb-6 text-center">Thank You, {firstName || 'Friend'}!</h2>
+                    <div className="prose prose-neutral max-w-none text-left space-y-4 text-neutral-700">
+                      <p>
+                        Dear {firstName || 'Friend'},
+                      </p>
+                      <p>
+                        Thank you for downloading our free eBook, &quot;The Small Business Bookkeeping Blueprint&quot;!
+                      </p>
+                      <p>
+                        We&apos;re thrilled to help you take the first step toward mastering your business finances. This guide is packed with beginner-friendly tips on bookkeeping principles, expense tracking, and setting up simple financial systems—perfect for small business owners, freelancers, and Texas entrepreneurs like you.
+                      </p>
+                      <p>
+                        <a
+                          href={EBOOK_DOWNLOAD_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-secondary-600 font-semibold hover:text-secondary-700 hover:underline"
+                        >
+                          Click here to download your free eBook now!
+                          <Download className="w-4 h-4 ml-1 inline-block" />
+                        </a>
+                      </p>
+                      <p>
+                        Inside, you&apos;ll find actionable advice, downloadable templates, and real-world examples to save time, reduce stress, and boost your profits. Whether you&apos;re juggling receipts or tackling QuickBooks for the first time, this blueprint is your go-to resource.
+                      </p>
+                      <p>
+                        Ready to take it further? Schedule a free 15-minute consultation with our experts at Transcendents3 to personalize these strategies for your business.
+                      </p>
+                      <p>
+                        Visit{' '}
+                        <a href="https://transcendents3.com" className="text-primary-600 font-medium hover:underline" target="_blank" rel="noopener noreferrer">
+                          transcendents3.com
+                        </a>{' '}
+                        to book your slot today!
+                      </p>
+                      <p className="pt-4">
+                        Warm regards,
+                        <br />
+                        The Transcendents3 Team
+                        <br />
+                        <span className="text-sm">
+                          Email: info@transcendents3.com | Phone: +1 (540) 929-9002 | Website: transcendents3.com
+                        </span>
+                      </p>
+                    </div>
+                    <div className="mt-8 text-center">
+                      <a
+                        href={EBOOK_DOWNLOAD_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center px-6 py-3 bg-secondary-500 text-white rounded-lg hover:bg-secondary-600 font-medium"
+                      >
+                        <Download className="w-5 h-5 mr-2" />
+                        Download Free eBook Now
+                      </a>
+                    </div>
                   </div>
                 )}
               </div>

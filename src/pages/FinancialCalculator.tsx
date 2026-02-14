@@ -9,6 +9,8 @@ const formatCurrency = (val: number) =>
 
 const parseNum = (s: string) => Math.max(0, parseFloat(s.replace(/[^0-9.-]/g, '')) || 0);
 
+const isValidNumberInput = (s: string) => /^-?[\d,.]*$/.test(s) || s === '';
+
 const FinancialCalculator: React.FC = () => {
   const [revenue, setRevenue] = useState('');
   const [cogs, setCogs] = useState('');
@@ -19,11 +21,21 @@ const FinancialCalculator: React.FC = () => {
     operatingIncome: number;
     netMargin: number;
   } | null>(null);
+  const [errors, setErrors] = useState<{ revenue?: string; cogs?: string; operatingExpenses?: string }>({});
 
   const calculate = () => {
     const rev = parseNum(revenue);
     const cost = parseNum(cogs);
     const opEx = parseNum(operatingExpenses);
+    const next: typeof errors = {};
+    if (rev < 0) next.revenue = 'Revenue cannot be negative.';
+    if (cost < 0) next.cogs = 'COGS cannot be negative.';
+    if (opEx < 0) next.operatingExpenses = 'Operating expenses cannot be negative.';
+    if (rev === 0 && cost === 0 && opEx === 0) {
+      next.revenue = 'Please enter at least one value (e.g. revenue) to calculate.';
+    }
+    setErrors(next);
+    if (Object.keys(next).length > 0) return;
     const grossProfit = rev - cost;
     const grossMargin = rev > 0 ? (grossProfit / rev) * 100 : 0;
     const operatingIncome = grossProfit - opEx;
@@ -36,13 +48,15 @@ const FinancialCalculator: React.FC = () => {
     setCogs('');
     setOperatingExpenses('');
     setResult(null);
+    setErrors({});
   };
 
   const handlePrint = () => {
     window.print();
   };
 
-  const inputClass = 'w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500';
+  const inputClass = (err?: string) =>
+    `w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${err ? 'border-red-500' : 'border-neutral-300'}`;
 
   return (
     <>
@@ -75,31 +89,49 @@ const FinancialCalculator: React.FC = () => {
                     <label className="block text-sm font-medium text-neutral-700 mb-2">Total Revenue (Annual or Monthly)</label>
                     <input
                       type="text"
+                      inputMode="decimal"
                       value={revenue}
-                      onChange={(e) => setRevenue(e.target.value)}
+                      onChange={(e) => {
+                        if (isValidNumberInput(e.target.value)) setRevenue(e.target.value);
+                        setErrors((prev) => ({ ...prev, revenue: undefined }));
+                      }}
                       placeholder="e.g. 50000"
-                      className={inputClass}
+                      className={inputClass(errors.revenue)}
+                      aria-invalid={!!errors.revenue}
                     />
+                    {errors.revenue && <p className="mt-1 text-sm text-red-600">{errors.revenue}</p>}
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-neutral-700 mb-2">Cost of Goods Sold (COGS)</label>
                     <input
                       type="text"
+                      inputMode="decimal"
                       value={cogs}
-                      onChange={(e) => setCogs(e.target.value)}
+                      onChange={(e) => {
+                        if (isValidNumberInput(e.target.value)) setCogs(e.target.value);
+                        setErrors((prev) => ({ ...prev, cogs: undefined }));
+                      }}
                       placeholder="e.g. 20000"
-                      className={inputClass}
+                      className={inputClass(errors.cogs)}
+                      aria-invalid={!!errors.cogs}
                     />
+                    {errors.cogs && <p className="mt-1 text-sm text-red-600">{errors.cogs}</p>}
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-neutral-700 mb-2">Operating Expenses</label>
                     <input
                       type="text"
+                      inputMode="decimal"
                       value={operatingExpenses}
-                      onChange={(e) => setOperatingExpenses(e.target.value)}
+                      onChange={(e) => {
+                        if (isValidNumberInput(e.target.value)) setOperatingExpenses(e.target.value);
+                        setErrors((prev) => ({ ...prev, operatingExpenses: undefined }));
+                      }}
                       placeholder="e.g. 15000"
-                      className={inputClass}
+                      className={inputClass(errors.operatingExpenses)}
+                      aria-invalid={!!errors.operatingExpenses}
                     />
+                    {errors.operatingExpenses && <p className="mt-1 text-sm text-red-600">{errors.operatingExpenses}</p>}
                   </div>
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button variant="primary" size="lg" className="flex-1" onClick={calculate}>

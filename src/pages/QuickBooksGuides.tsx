@@ -4,33 +4,61 @@ import Button from '../components/ui/Button';
 import { CALENDLY_CONSULTATION_URL, EBOOK_DOWNLOAD_URL, FORM_SUBMIT_URL } from '../constants';
 import { BookOpen, Download, CheckCircle } from 'lucide-react';
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 const QuickBooksGuides: React.FC = () => {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submittedEmail, setSubmittedEmail] = useState('');
+  const [errors, setErrors] = useState<{ firstName?: string; lastName?: string; email?: string }>({});
+
+  const validate = (): boolean => {
+    const next: typeof errors = {};
+    const f = firstName.trim();
+    const l = lastName.trim();
+    const e = email.trim();
+    if (!f) next.firstName = 'First name is required.';
+    else if (f.length < 2) next.firstName = 'First name must be at least 2 characters.';
+    if (!l) next.lastName = 'Last name is required.';
+    else if (l.length < 2) next.lastName = 'Last name must be at least 2 characters.';
+    if (!e) next.email = 'Email is required.';
+    else if (!EMAIL_REGEX.test(e)) next.email = 'Please enter a valid email address.';
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!validate()) return;
+    const f = firstName.trim();
+    const l = lastName.trim();
+    const e = email.trim();
     setIsSubmitting(true);
+    setErrors({});
     try {
       const res = await fetch(FORM_SUBMIT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          _subject: `${firstName || 'Someone'} has just downloaded your eBook`,
-          firstName: firstName || 'Not provided',
-          lastName: lastName || 'Not provided',
-          email,
+          _subject: `${f} has just downloaded our ebook`,
+          firstName: f,
+          lastName: l,
+          email: e,
           _template: 'box',
           _captcha: 'false',
         }),
       });
-      if (res.ok) setSubmitted(true);
-      else throw new Error();
+      if (res.ok) {
+        setSubmittedEmail(e);
+        setSubmitted(true);
+      } else {
+        setErrors({ email: 'Something went wrong. Please try again.' });
+      }
     } catch {
+      setSubmittedEmail(e);
       setSubmitted(true);
     } finally {
       setIsSubmitting(false);
@@ -70,32 +98,36 @@ const QuickBooksGuides: React.FC = () => {
                       </div>
                       <div>
                         <h2 className="text-xl font-bold text-primary-800">Get Your Free Guide</h2>
-                        <p className="text-neutral-600 text-sm">Enter your email to download instantly</p>
+                        <p className="text-neutral-600 text-sm">Enter your details to receive the eBook by email</p>
                       </div>
                     </div>
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-neutral-700 mb-1">First Name *</label>
                           <input
                             type="text"
                             value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
+                            onChange={(e) => { setFirstName(e.target.value); setErrors((prev) => ({ ...prev, firstName: undefined })); }}
                             placeholder="John"
-                            required
-                            className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 ${errors.firstName ? 'border-red-500' : 'border-neutral-300'}`}
+                            aria-invalid={!!errors.firstName}
+                            aria-describedby={errors.firstName ? 'err-firstname' : undefined}
                           />
+                          {errors.firstName && <p id="err-firstname" className="mt-1 text-sm text-red-600">{errors.firstName}</p>}
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-neutral-700 mb-1">Last Name *</label>
                           <input
                             type="text"
                             value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
+                            onChange={(e) => { setLastName(e.target.value); setErrors((prev) => ({ ...prev, lastName: undefined })); }}
                             placeholder="Smith"
-                            required
-                            className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 ${errors.lastName ? 'border-red-500' : 'border-neutral-300'}`}
+                            aria-invalid={!!errors.lastName}
+                            aria-describedby={errors.lastName ? 'err-lastname' : undefined}
                           />
+                          {errors.lastName && <p id="err-lastname" className="mt-1 text-sm text-red-600">{errors.lastName}</p>}
                         </div>
                       </div>
                       <div>
@@ -103,82 +135,44 @@ const QuickBooksGuides: React.FC = () => {
                         <input
                           type="email"
                           value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                          onChange={(e) => { setEmail(e.target.value); setErrors((prev) => ({ ...prev, email: undefined })); }}
                           placeholder="you@example.com"
-                          required
-                          className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 ${errors.email ? 'border-red-500' : 'border-neutral-300'}`}
+                          aria-invalid={!!errors.email}
+                          aria-describedby={errors.email ? 'err-email' : undefined}
                         />
+                        {errors.email && <p id="err-email" className="mt-1 text-sm text-red-600">{errors.email}</p>}
                       </div>
                       <Button variant="primary" size="lg" type="submit" fullWidth disabled={isSubmitting}>
-                        {isSubmitting ? 'Processing...' : 'Download Free Guide'}
+                        {isSubmitting ? 'Sending...' : 'Download Free Guide'}
                       </Button>
                     </form>
                   </>
                 ) : (
-                  <div className="py-8">
+                  <div className="py-8 text-center">
                     <CheckCircle className="h-16 w-16 text-secondary-500 mx-auto mb-4" />
-                    <h2 className="text-2xl font-bold text-primary-800 mb-6 text-center">Thank You, {firstName || 'Friend'}!</h2>
-                    <div className="prose prose-neutral max-w-none text-left space-y-4 text-neutral-700">
-                      <p>
-                        Dear {firstName || 'Friend'},
-                      </p>
-                      <p>
-                        Thank you for downloading our free eBook, &quot;The Small Business Bookkeeping Blueprint&quot;!
-                      </p>
-                      <p>
-                        We&apos;re thrilled to help you take the first step toward mastering your business finances. This guide is packed with beginner-friendly tips on bookkeeping principles, expense tracking, and setting up simple financial systems—perfect for small business owners, freelancers, and Texas entrepreneurs like you.
-                      </p>
-                      <p>
-                        <a
-                          href={EBOOK_DOWNLOAD_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center text-secondary-600 font-semibold hover:text-secondary-700 hover:underline"
-                        >
-                          Click here to download your free eBook now!
-                          <Download className="w-4 h-4 ml-1 inline-block" />
-                        </a>
-                      </p>
-                      <p>
-                        Inside, you&apos;ll find actionable advice, downloadable templates, and real-world examples to save time, reduce stress, and boost your profits. Whether you&apos;re juggling receipts or tackling QuickBooks for the first time, this blueprint is your go-to resource.
-                      </p>
-                      <p>
-                        Ready to take it further? Schedule a free 15-minute consultation with our experts at Transcendents3 to personalize these strategies for your business.
-                      </p>
-                      <p>
-                        Visit{' '}
-                        <a href="https://transcendents3.com" className="text-primary-600 font-medium hover:underline" target="_blank" rel="noopener noreferrer">
-                          transcendents3.com
-                        </a>{' '}
-                        to book your slot today!
-                      </p>
-                      <p className="pt-4">
-                        Warm regards,
-                        <br />
-                        The Transcendents3 Team
-                        <br />
-                        <span className="text-sm">
-                          Email: info@transcendents3.com | Phone: +1 (540) 929-9002 | Website: transcendents3.com
-                        </span>
-                      </p>
-                    </div>
-                    <div className="mt-8 text-center">
-                      <a
-                        href={EBOOK_DOWNLOAD_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center px-6 py-3 bg-secondary-500 text-white rounded-lg hover:bg-secondary-600 font-medium"
-                      >
-                        <Download className="w-5 h-5 mr-2" />
-                        Download Free eBook Now
-                      </a>
-                    </div>
+                    <h2 className="text-2xl font-bold text-primary-800 mb-2">Thank you!</h2>
+                    <p className="text-neutral-700 mb-4">
+                      Your eBook has been sent to <strong className="text-primary-800">{submittedEmail}</strong>.
+                    </p>
+                    <p className="text-neutral-600 text-sm mb-6">
+                      Please check your inbox and spam folder. If you don&apos;t see it shortly, use the link below to download.
+                    </p>
+                    <a
+                      href={EBOOK_DOWNLOAD_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center px-6 py-3 bg-secondary-500 text-white rounded-lg hover:bg-secondary-600 font-medium"
+                    >
+                      <Download className="w-5 h-5 mr-2" />
+                      Download eBook
+                    </a>
                   </div>
                 )}
               </div>
 
               <div className="mt-12 grid gap-6">
-                <h3 className="text-xl font-bold text-primary-800">What's Inside the Guide</h3>
+                <h3 className="text-xl font-bold text-primary-800">What&apos;s Inside the Guide</h3>
                 <ul className="space-y-3 text-neutral-700">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-secondary-500 flex-shrink-0 mt-0.5" />

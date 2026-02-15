@@ -24,3 +24,8 @@ export const CV_DRIVE_FOLDER_URL = 'https://drive.google.com/drive/folders/1sIli
 
 /** eBook download link - The Small Business Bookkeeping Blueprint */
 export const EBOOK_DOWNLOAD_URL = 'https://drive.google.com/file/d/1_I6P-y58W9qEZ2Tec2u9KJYojqqNXgWk/view?usp=sharing';
+
+/** EmailJS: send eBook thank-you email to recipient. Set in .env (see docs/EMAILJS_EBOOK_SETUP.md) */
+export const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? '';
+export const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID ?? '';
+export const EMAILJS_TEMPLATE_ID_EBOOK = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_EBOOK ?? '';

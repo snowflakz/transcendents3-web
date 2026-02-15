@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import SEO from '../components/SEO';
 import Hero from '../components/sections/home/Hero';
 import Services from '../components/sections/home/Services';

@@ -1,7 +1,22 @@
 import React from 'react';
 import { Cookie, Shield, Eye, Settings, Calendar, Users, Lock } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const CookiePolicy: React.FC = () => {
+  return (
+    <>
+      <SEO
+        title="Cookie Policy | Transcendents3"
+        description="How Transcendents3 uses cookies on our website. Book keeper Texas & USA."
+        keywords="cookie policy, Transcendents3, privacy, website cookies"
+        path="/cookie-policy"
+      />
+      <CookiePolicyContent />
+    </>
+  );
+};
+
+function CookiePolicyContent() {
   const cookieTypes = [
     {
       icon: <Shield className="h-6 w-6" />,

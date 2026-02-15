@@ -22,6 +22,7 @@ const WebinarsLanding: React.FC = () => {
         title="Bookkeeping Webinars | Free Training - Texas & USA Book Keeper | Transcendents3"
         description="Free bookkeeping webinars and training. Learn expert bookkeeping tips from Texas's leading book keeper. Watch our video series and schedule a free consultation today."
         keywords="bookkeeper Texas, book keeper USA, bookkeeping webinars, QuickBooks training, small business accounting, financial management"
+        path="/resources/webinars"
       />
       <div className="min-h-screen bg-neutral-50">
         {/* Sticky CTA Bar - Hidden on scroll */}

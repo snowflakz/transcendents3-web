@@ -96,6 +96,7 @@ const Career: React.FC = () => {
         title="Careers | Join Our Team - Transcendents3"
         description="Join Transcendents3. We're hiring bookkeepers, tax preparers, and QuickBooks specialists. Apply with your CV today."
         keywords="bookkeeper jobs, accounting careers, Transcendents3 careers, Texas bookkeeping jobs"
+        path="/careers"
       />
       <div className="min-h-screen bg-neutral-50">
         {/* Hero */}

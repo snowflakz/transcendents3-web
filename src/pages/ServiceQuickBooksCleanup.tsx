@@ -11,6 +11,7 @@ const ServiceQuickBooksCleanup: React.FC = () => {
         title="QuickBooks Cleanup & Setup | Texas & USA | Transcendents3"
         description="Professional QuickBooks Online cleanup, setup, and optimization. Fix errors, organize your books, and get tax-ready. Certified QuickBooks ProAdvisors."
         keywords="QuickBooks cleanup, QuickBooks setup Texas, QBO cleanup, book keeper Texas, QuickBooks ProAdvisor"
+        path="/services/quickbooks-cleanup"
       />
       <div className="min-h-screen">
         <section className="relative bg-primary-800 overflow-hidden">

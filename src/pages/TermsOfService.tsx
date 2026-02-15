@@ -1,7 +1,14 @@
 import React from 'react';
+import SEO from '../components/SEO';
 
 const TermsOfService: React.FC = () => (
   <>
+    <SEO
+      title="Terms of Service | Transcendents3"
+      description="Terms and conditions for using Transcendents3 website and financial services. Book keeper Texas & USA."
+      keywords="terms of service, Transcendents3, terms and conditions"
+      path="/terms-of-service"
+    />
     {/* Page Header */}
     <div className="bg-primary-800 py-20 md:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

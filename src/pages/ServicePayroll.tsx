@@ -11,6 +11,7 @@ const ServicePayroll: React.FC = () => {
         title="Payroll Services | Compliant & Accurate | Texas & USA | Transcendents3"
         description="Professional payroll processing for small businesses. On-time payments, tax compliance, and peace of mind. Trusted by Texas and USA business owners."
         keywords="payroll services Texas, small business payroll, payroll compliance, Texas payroll, book keeper USA"
+        path="/services/payroll"
       />
       <div className="min-h-screen">
         <section className="relative bg-primary-800 overflow-hidden">

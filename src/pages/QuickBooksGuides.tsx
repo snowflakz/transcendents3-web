@@ -130,6 +130,7 @@ const QuickBooksGuides: React.FC = () => {
         title="QuickBooks Guide | Free Download - Texas Book Keeper | Transcendents3"
         description="Free QuickBooks guide and resources. Expert tutorials for small business bookkeeping. Download our comprehensive guide from Texas's trusted book keeper."
         keywords="bookkeeper Texas, QuickBooks guide, QuickBooks tutorials, book keeper USA, small business accounting, QBO guide"
+        path="/resources/quickbooks-guides"
       />
       <div className="min-h-screen bg-neutral-50">
         <section className="bg-primary-800 py-16 md:py-24">

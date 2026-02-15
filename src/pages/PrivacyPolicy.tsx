@@ -7,6 +7,7 @@ const PrivacyPolicy: React.FC = () => (
       title="Privacy Policy | Transcendents3"
       description="Learn how Transcendents3 protects your privacy and handles your personal and financial information."
       keywords="privacy policy, Transcendents3, data protection, bookkeeping privacy"
+      path="/privacy-policy"
     />
     {/* Page Header */}
     <div className="bg-primary-800 py-20 md:py-28">

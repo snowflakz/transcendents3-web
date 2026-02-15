@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const faqs = [
   {
@@ -65,6 +66,12 @@ const FAQ: React.FC = () => {
 
   return (
     <>
+      <SEO
+        title="FAQ | Book Keeper Texas - Common Questions | Transcendents3"
+        description="Frequently asked questions about Transcendents3 bookkeeping, payroll, QuickBooks, and consulting. Book keeper Texas & USA."
+        keywords="bookkeeping FAQ, QuickBooks help, payroll questions, book keeper Texas, Transcendents3 FAQ, small business accounting"
+        path="/faq"
+      />
       {/* Page Header */}
       <div className="relative bg-primary-800 overflow-hidden">
         <div className="absolute inset-0 opacity-30">

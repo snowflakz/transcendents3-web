@@ -64,6 +64,7 @@ const FinancialCalculator: React.FC = () => {
         title="Financial Calculator | Texas & USA Book Keeper | Transcendents3"
         description="Free business financial calculator. Calculate gross profit, margins, and operating income. Texas and USA compliant. Expert book keeper tools for small business."
         keywords="bookkeeper Texas, financial calculator, profit margin calculator, gross profit, business calculator, book keeper USA"
+        path="/resources/calculators"
       />
       <div className="min-h-screen bg-neutral-50">
         <div className="no-print">

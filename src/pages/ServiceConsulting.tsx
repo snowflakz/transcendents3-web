@@ -11,6 +11,7 @@ const ServiceConsulting: React.FC = () => {
         title="Business Consulting | Strategic Financial Advice | Texas & USA | Transcendents3"
         description="Expert business consulting for growth. Cash flow forecasting, budgeting, profit improvement. Strategic advice from certified financial professionals."
         keywords="business consulting Texas, financial consulting, cash flow, business strategy, book keeper USA"
+        path="/services/consulting"
       />
       <div className="min-h-screen">
         <section className="relative bg-primary-800 overflow-hidden">

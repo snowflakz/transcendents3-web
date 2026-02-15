@@ -1,9 +1,24 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import SectionHeading from '../components/ui/SectionHeading';
 import { Award, Users, Target, Clock } from 'lucide-react';
 import Button from '../components/ui/Button';
 
 const About: React.FC = () => {
+  return (
+    <>
+      <SEO
+        title="About Us | Book Keeper Texas - Transcendents3"
+        description="Meet the Transcendents3 team. Certified bookkeepers, QuickBooks ProAdvisors, and financial experts serving Texas and USA small businesses."
+        keywords="about Transcendents3, book keeper Texas, accounting team, QuickBooks ProAdvisor, Richmond TX bookkeeping"
+        path="/about"
+      />
+      <AboutContent />
+    </>
+  );
+};
+
+function AboutContent() {
   const teamMembers = [
     {
       name: "Anita",

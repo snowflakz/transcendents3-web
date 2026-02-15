@@ -1,5 +1,6 @@
 import React from 'react';
 import { Calculator, BookOpen, Video } from 'lucide-react';
+import SEO from '../components/SEO';
 import Button from '../components/ui/Button';
 
 const resources = [
@@ -29,6 +30,12 @@ const resources = [
 const Resources: React.FC = () => {
   return (
     <>
+      <SEO
+        title="Resources | Calculators, QuickBooks Guides & Webinars | Transcendents3"
+        description="Free financial calculators, QuickBooks guides, and bookkeeping webinars. Tools for Texas and USA small business owners from your book keeper."
+        keywords="financial calculator, QuickBooks guide, bookkeeping webinars, book keeper Texas, small business resources, free tools"
+        path="/resources"
+      />
       {/* Page Header */}
       <div className="bg-primary-800 py-20 md:py-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, CheckCircle, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import SEO from '../components/SEO';
 import Button from '../components/ui/Button';
 import InputMaskComponent from '../components/ui/InputMask';
 import { useNotification } from '../components/ui/NotificationProvider';
@@ -120,6 +121,12 @@ const Contact: React.FC = () => {
   
   return (
     <>
+      <SEO
+        title="Contact Us | Book Keeper Texas - Transcendents3"
+        description="Contact Transcendents3 for bookkeeping, payroll, and QuickBooks support. Richmond TX office. Free consultation. Book keeper Texas & USA."
+        keywords="contact Transcendents3, book keeper Texas, Richmond TX bookkeeper, free consultation, bookkeeping contact"
+        path="/contact"
+      />
       {/* Page Header */}
       <div className="relative bg-primary-800 overflow-hidden">
         <div className="absolute inset-0 opacity-30">

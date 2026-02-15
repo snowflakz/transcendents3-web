@@ -1,10 +1,25 @@
 import React from 'react';
 import { Search, Calendar, User, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
 import Button from '../components/ui/Button';
 import { Link } from 'react-router-dom';
 import { CALENDLY_CONSULTATION_URL } from '../constants';
 
 const Blog: React.FC = () => {
+  return (
+    <>
+      <SEO
+        title="Blog | Book Keeper Texas - Tips & Insights | Transcendents3"
+        description="Expert articles on bookkeeping, QuickBooks, tax tips, and small business finance. Book keeper Texas & USA insights from Transcendents3."
+        keywords="bookkeeping blog, QuickBooks tips, small business tax, book keeper Texas, accounting blog, cash flow, Transcendents3"
+        path="/blog"
+      />
+      <BlogContent />
+    </>
+  );
+};
+
+function BlogContent() {
   const blogPosts = [
     {
       id: 1,

@@ -11,6 +11,7 @@ const ServiceBookkeeping: React.FC = () => {
         title="Professional Bookkeeping Services | Texas & USA | Transcendents3"
         description="Expert bookkeeping for small businesses. Accurate records, tax-ready reports, and peace of mind. Trusted by 50+ Texas and USA business owners."
         keywords="book keeper Texas, bookkeeping services, small business accounting, QuickBooks bookkeeping, Texas bookkeeper"
+        path="/services/bookkeeping"
       />
       <div className="min-h-screen">
         <section className="relative bg-primary-800 overflow-hidden">

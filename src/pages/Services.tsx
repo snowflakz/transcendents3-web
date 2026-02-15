@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import SectionHeading from '../components/ui/SectionHeading';
 import { BookOpen, DollarSign, Laptop, LineChart, ArrowRight } from 'lucide-react';
 import Button from '../components/ui/Button';
@@ -43,6 +44,12 @@ const Services: React.FC = () => {
 
   return (
     <>
+      <SEO
+        title="Bookkeeping, Payroll & QuickBooks Services | Texas & USA | Transcendents3"
+        description="Professional bookkeeping, payroll, QuickBooks cleanup, and business consulting for Texas and USA. Free assessment. Trusted small business book keeper."
+        keywords="bookkeeping services Texas, payroll services, QuickBooks cleanup, business consulting, book keeper USA, small business accounting Texas"
+        path="/services"
+      />
       <div className="bg-primary-800 py-20 md:py-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
@@ -74,6 +81,8 @@ const Services: React.FC = () => {
                   <img
                     src={service.image}
                     alt={service.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>

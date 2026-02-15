@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import SEO from '../components/SEO';
 import Hero from '../components/sections/home/Hero';
 import Services from '../components/sections/home/Services';
 import Testimonials from '../components/sections/home/Testimonials';
@@ -9,6 +10,12 @@ import SectionHeading from '../components/ui/SectionHeading';
 const Home: React.FC = () => {
   return (
     <>
+      <SEO
+        title="Book Keeper Texas | Expert Bookkeeping, Payroll & QuickBooks - Transcendents3"
+        description="Top book keeper in Texas and USA. Professional bookkeeping, payroll, QuickBooks cleanup, and business consulting. Free consultation. Richmond TX."
+        keywords="book keeper Texas, bookkeeper Texas, book keeper USA, bookkeeping services Texas, payroll Texas, QuickBooks cleanup, small business accounting, Richmond TX bookkeeper"
+        path="/"
+      />
       <Hero />
       
       {/* Why Choose Us Section */}

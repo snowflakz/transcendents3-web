@@ -19,8 +19,9 @@ const Services: React.FC = () => {
     {
       id: 'payroll',
       icon: <DollarSign size={40} className="text-secondary-500" />,
-      title: 'Payroll',
-      description: 'On-time paychecks, proper tax withholding, and zero compliance headaches. W-2s, 1099s, and payroll tax filing done right.',
+      title: 'Insurance & Retirement Planning',
+      description:
+        'Life insurance, health insurance for seniors, mutual funds, annuities, 401(k) rollovers, auto and mortgage protection, college fund and retirement planning designed around your goals.',
       path: '/services/payroll',
       image: 'https://images.pexels.com/photos/7821906/pexels-photo-7821906.jpeg?auto=compress&cs=tinysrgb&w=600',
     },
@@ -45,9 +46,9 @@ const Services: React.FC = () => {
   return (
     <>
       <SEO
-        title="Bookkeeping, Payroll & QuickBooks Services | Texas & USA | Transcendents3"
-        description="Professional bookkeeping, payroll, QuickBooks cleanup, and business consulting for Texas and USA. Free assessment. Trusted small business book keeper."
-        keywords="bookkeeping services Texas, payroll services, QuickBooks cleanup, business consulting, book keeper USA, small business accounting Texas"
+        title="Bookkeeping, Insurance & QuickBooks Services | Texas & USA | Transcendents3"
+        description="Professional bookkeeping, insurance and retirement planning, QuickBooks cleanup, and business consulting for Texas and USA. Free assessment from a trusted small business partner."
+        keywords="bookkeeping services Texas, insurance and retirement planning, QuickBooks cleanup, business consulting, book keeper USA, small business accounting Texas"
         path="/services"
       />
       <div className="bg-primary-800 py-20 md:py-28">

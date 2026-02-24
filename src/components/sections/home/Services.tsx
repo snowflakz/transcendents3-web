@@ -13,8 +13,8 @@ const Services: React.FC = () => {
     },
     {
       icon: <DollarSign size={24} />,
-      title: 'Payroll Management & Processing',
-      description: 'Complete payroll solutions including employee payment processing, tax withholdings, benefits administration, and payroll reporting for businesses of all sizes.',
+      title: 'Insurance & Retirement Planning',
+      description: 'Life and health insurance for seniors, auto and mortgage protection, mutual funds, annuities, 401(k) rollovers, college fund and retirement planning tailored to your goals.',
       href: '/services#payroll',
     },
     {

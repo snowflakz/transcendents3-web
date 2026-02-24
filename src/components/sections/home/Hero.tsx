@@ -124,10 +124,10 @@ const Hero: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="animate-slide-up">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white leading-tight mb-6">
-              Expert <span className="text-secondary-500">Bookkeeping & Payroll</span> Services for Your Business
+              Expert <span className="text-secondary-500">Bookkeeping, Insurance & Retirement Planning</span> for Your Future
             </h1>
             <p className="text-xl text-neutral-200 mb-8 max-w-lg">
-              Professional bookkeeping, payroll management, tax preparation, and business consulting services. Let our certified experts handle your finances so you can focus on growing your business.
+              Professional bookkeeping, insurance guidance, retirement planning, and business consulting. Let our certified experts protect your finances so you can focus on what matters most.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 

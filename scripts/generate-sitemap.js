@@ -20,7 +20,7 @@ const routes = [
     path: '/services',
     priority: '0.9',
     changefreq: 'monthly',
-    description: 'Services - Bookkeeping, Payroll, Tax Preparation'
+    description: 'Services - Bookkeeping, Insurance & Retirement Planning'
   },
   {
     path: '/about',

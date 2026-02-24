@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               {[
                 { name: 'Bookkeeping', path: '/services/bookkeeping' },
-                { name: 'Payroll', path: '/services/payroll' },
+                { name: 'Insurance & Retirement Planning', path: '/services/payroll' },
                 { name: 'QuickBooks (QBO) Cleanup', path: '/services/quickbooks-cleanup' },
                 { name: 'Business Consulting', path: '/services/consulting' },
               ].map((service) => (

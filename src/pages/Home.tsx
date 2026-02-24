@@ -11,9 +11,9 @@ const Home: React.FC = () => {
   return (
     <>
       <SEO
-        title="Book Keeper Texas | Expert Bookkeeping, Payroll & QuickBooks - Transcendents3"
-        description="Top book keeper in Texas and USA. Professional bookkeeping, payroll, QuickBooks cleanup, and business consulting. Free consultation. Richmond TX."
-        keywords="book keeper Texas, bookkeeper Texas, book keeper USA, bookkeeping services Texas, payroll Texas, QuickBooks cleanup, small business accounting, Richmond TX bookkeeper"
+        title="Book Keeper Texas | Bookkeeping, Insurance & QuickBooks - Transcendents3"
+        description="Top book keeper in Texas and USA. Professional bookkeeping, insurance and retirement planning, QuickBooks cleanup, and business consulting. Free consultation. Richmond TX."
+        keywords="book keeper Texas, insurance and retirement planning, bookkeeping services Texas, QuickBooks cleanup, small business accounting, Richmond TX bookkeeper"
         path="/"
       />
       <Hero />

@@ -17,6 +17,14 @@ const Services: React.FC = () => {
       image: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=600',
     },
     {
+      id: 'consulting',
+      icon: <LineChart size={40} className="text-secondary-500" />,
+      title: 'Business Consulting',
+      description: 'Strategic financial guidance for growth. Cash flow forecasting, budgeting, profit improvement, and a partner who speaks your language.',
+      path: '/services/consulting',
+      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600',
+    },
+    {
       id: 'payroll',
       icon: <DollarSign size={40} className="text-secondary-500" />,
       title: 'Insurance & Retirement Planning',
@@ -32,14 +40,6 @@ const Services: React.FC = () => {
       description: 'Messy QuickBooks? We clean it up. Error correction, chart optimization, and reports you can trust. Certified ProAdvisors.',
       path: '/services/quickbooks-cleanup',
       image: 'https://images.pexels.com/photos/4475524/pexels-photo-4475524.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-      id: 'consulting',
-      icon: <LineChart size={40} className="text-secondary-500" />,
-      title: 'Business Consulting',
-      description: 'Strategic financial guidance for growth. Cash flow forecasting, budgeting, profit improvement, and a partner who speaks your language.',
-      path: '/services/consulting',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600',
     },
   ];
 

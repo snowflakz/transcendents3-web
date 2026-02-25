@@ -1,10 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SEO from '../components/SEO';
 import Button from '../components/ui/Button';
 import { CALENDLY_CONSULTATION_URL } from '../constants';
 import { DollarSign, CheckCircle, Shield } from 'lucide-react';
 
+const INSURANCE_SERVICES = [
+  {
+    title: '401(k) Rollover',
+    short: '401(k) rollover support when changing jobs or retiring',
+    detail:
+      'When you change jobs or retire, leaving old 401(k)s scattered means missed growth and harder management. We help you consolidate into a single IRA or new employer plan with the right mix of investments and tax strategy, so you keep more of what you\'ve saved—and stay in control of your retirement.',
+  },
+  {
+    title: 'Annuities',
+    short: 'Annuities to create predictable income you cannot outlive',
+    detail:
+      'Turn a portion of your savings into guaranteed income that can last for life. Annuities can help cover essential expenses in retirement, reduce the risk of outliving your money, and add predictability when markets are volatile. We help you choose the right type and structure for your goals.',
+  },
+  {
+    title: 'Auto Insurance',
+    short: 'Auto insurance coordination as part of your overall protection plan',
+    detail:
+      'The right auto coverage protects your family and your finances after an accident. We help you coordinate policies so you\'re not overpaying or underinsured, and so your auto plan fits with your broader protection strategy—one less worry on the road.',
+  },
+  {
+    title: 'College Fund',
+    short: 'College fund strategies to prepare for future education costs',
+    detail:
+      'Education costs keep rising. We design strategies—like 529 plans and other tax-advantaged options—so you can save for your children\'s or grandchildren\'s education without derailing your own retirement goals. Start early and let time work in your favor.',
+  },
+  {
+    title: 'Health Insurance for Seniors',
+    short: 'Health insurance guidance for seniors, including Medicare-related options',
+    detail:
+      'Navigating Medicare, supplements, and prescription coverage is complex. We provide clear guidance on enrollment, plan selection, and cost-saving options so you get the coverage you need without paying more than necessary. Your health and your budget both matter.',
+  },
+  {
+    title: 'Life Insurance',
+    short: 'Life insurance (term and permanent) to protect your family\'s income',
+    detail:
+      'If something happens to you, life insurance ensures your family can keep their home, pay for education, and maintain their lifestyle. We help you choose the right type and amount—term or permanent—based on your income, debts, and goals, so they\'re protected when it matters most.',
+  },
+  {
+    title: 'Mortgage Protection',
+    short: 'Mortgage protection so your home is safe if the unexpected happens',
+    detail:
+      'Your home is likely your largest asset. Mortgage protection and related insurance can help your family pay off the loan if you\'re no longer able to, so they don\'t lose the roof over their heads during a difficult time. Peace of mind for you and for them.',
+  },
+  {
+    title: 'Mutual Funds',
+    short: 'Mutual fund investment strategies aligned with your risk tolerance',
+    detail:
+      'Diversified, professionally managed portfolios that match your risk tolerance and timeline. We help you select and monitor funds so your long-term savings work as hard as you do—without taking on more risk than you\'re comfortable with.',
+  },
+  {
+    title: 'Retirement Planning',
+    short: 'Comprehensive retirement planning that brings everything together',
+    detail:
+      'A single plan that ties together your 401(k)s, IRAs, Social Security, and other assets. We help you set a target, manage taxes, and adjust over time so you can retire on your terms with confidence. One roadmap, built around your life.',
+  },
+];
+
 const ServicePayroll: React.FC = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   return (
     <>
       <SEO
@@ -95,23 +153,39 @@ const ServicePayroll: React.FC = () => {
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-primary-800 text-center mb-12">Insurance & Investment Solutions We Offer</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                'Life insurance (term and permanent) to protect your family’s income',
-                'Health insurance guidance for seniors, including Medicare-related options',
-                'Mutual fund investment strategies aligned with your risk tolerance',
-                'Annuities to create predictable income you cannot outlive',
-                '401(k) rollover support when changing jobs or retiring',
-                'Auto insurance coordination as part of your overall protection plan',
-                'Mortgage protection so your home is safe if the unexpected happens',
-                'College fund strategies to prepare for future education costs',
-                'Comprehensive retirement planning that brings everything together',
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3 p-4 bg-white rounded-lg shadow-md">
-                  <Shield className="w-6 h-6 text-secondary-500 flex-shrink-0 mt-1" />
-                  <span className="text-neutral-700 font-medium">{item}</span>
-                </div>
-              ))}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {INSURANCE_SERVICES.map((service, i) => {
+                const isHovered = hoveredIndex === i;
+                const someHovered = hoveredIndex !== null;
+                const isPushed = someHovered && !isHovered;
+                return (
+                  <div
+                    key={service.title}
+                    onMouseEnter={() => setHoveredIndex(i)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    className={`
+                      relative flex items-start gap-3 p-4 bg-white rounded-xl border-2 transition-all duration-300 ease-out
+                      ${isHovered
+                        ? 'border-primary-500 shadow-xl scale-[1.02] z-20'
+                        : isPushed
+                          ? 'border-neutral-100 scale-[0.96] translate-y-2 opacity-90'
+                          : 'border-transparent shadow-md hover:border-primary-200'
+                      }
+                    `}
+                  >
+                    <Shield className="w-6 h-6 text-secondary-500 flex-shrink-0 mt-1" />
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-neutral-800 font-semibold mb-1">{service.title}</h3>
+                      <p className="text-neutral-600 text-sm">{service.short}</p>
+                      {isHovered && (
+                        <div className="mt-4 p-3 bg-primary-50 rounded-lg border border-primary-100">
+                          <p className="text-neutral-700 text-sm leading-relaxed">{service.detail}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>

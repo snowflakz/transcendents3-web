@@ -69,9 +69,9 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               {[
                 { name: 'Bookkeeping', path: '/services/bookkeeping' },
+                { name: 'Business Consulting', path: '/services/consulting' },
                 { name: 'Insurance & Retirement Planning', path: '/services/payroll' },
                 { name: 'QuickBooks (QBO) Cleanup', path: '/services/quickbooks-cleanup' },
-                { name: 'Business Consulting', path: '/services/consulting' },
               ].map((service) => (
                 <li key={service.name}>
                   <button

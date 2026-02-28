@@ -44,7 +44,7 @@ const ServiceConsulting: React.FC = () => {
                 <p className="text-neutral-700 mb-4">Data without strategy is just numbers. You need someone who can turn your financials into actionable insights—who can spot opportunities, flag risks, and help you make decisions that move the needle.</p>
                 <p className="text-neutral-700 mb-6">Whether you're scaling, pivoting, or optimizing, a trusted advisor can mean the difference between guesswork and confidence. Growth requires clarity. We provide it.</p>
                 <ul className="space-y-3">
-                  {['Clear cash flow visibility', 'Strategic budgeting and planning', 'Profit improvement strategies', 'Risk assessment and mitigation'].map((item, i) => (
+                  {['Clear cash flow visibility', 'Strategic budgeting and planning', 'Profit improvement strategies', 'Risk assessment and mitigation', 'Debt profiling and elimination', 'Financial analysis'].map((item, i) => (
                     <li key={i} className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5 text-secondary-500 flex-shrink-0" />
                       <span className="text-neutral-700">{item}</span>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../../ui/Button';
-import { CALENDLY_CONSULTATION_URL, FORM_SUBMIT_URL } from '../../../constants';
+import { CALENDLY_CONSULTATION_URL, CALENDLY_INSURANCE_URL, FORM_SUBMIT_URL } from '../../../constants';
 import InputMaskComponent from '../../ui/InputMask';
 import { useNotification } from '../../ui/NotificationProvider';
 
@@ -129,7 +129,7 @@ const Hero: React.FC = () => {
             <p className="text-xl text-neutral-200 mb-8 max-w-lg">
               Professional bookkeeping, insurance guidance, retirement planning, and business consulting. Let our certified experts protect your finances so you can focus on what matters most.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
               <Button 
                 variant="secondary" 
                 size="lg" 
@@ -137,6 +137,15 @@ const Hero: React.FC = () => {
                 external={true}
               >
                 Schedule a Free Consultation
+              </Button>
+              <Button 
+                variant="secondary" 
+                size="lg" 
+                href={CALENDLY_INSURANCE_URL}
+                external={true}
+                className="bg-secondary-500 hover:bg-secondary-600 border-0"
+              >
+                Book Free Insurance Call
               </Button>
               <Button 
                 variant="outline" 

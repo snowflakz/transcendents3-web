@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SEO from '../components/SEO';
 import Button from '../components/ui/Button';
-import { CALENDLY_CONSULTATION_URL } from '../constants';
+import { CALENDLY_INSURANCE_URL } from '../constants';
 import { DollarSign, CheckCircle, Shield } from 'lucide-react';
 
 const INSURANCE_SERVICES = [
@@ -69,7 +69,7 @@ const ServicePayroll: React.FC = () => {
         title="Insurance & Retirement Planning | Protect What Matters Most | Transcendents3"
         description="Personalized life insurance, health insurance for seniors, mutual funds, annuities, 401(k) rollovers, auto coverage, mortgage protection, college funds, and retirement plans."
         keywords="life insurance, health insurance for seniors, mutual funds, annuities, 401k rollover, auto insurance, mortgage protection, college fund, retirement plan, insurance Texas"
-        path="/services/payroll"
+        path="/services/insurance"
       />
       <div className="min-h-screen">
         <section className="relative bg-primary-800 overflow-hidden">
@@ -90,14 +90,14 @@ const ServicePayroll: React.FC = () => {
               <p className="text-xl text-neutral-200 mb-8">
                 Protect your income, your lifestyle, and your legacy with a personalized mix of insurance and investment strategies—so you can feel confident about every stage of life.
               </p>
-              <Button variant="secondary" size="lg" href={CALENDLY_CONSULTATION_URL} external={true}>
+              <Button variant="secondary" size="lg" href={CALENDLY_INSURANCE_URL} external={true}>
                 Schedule Insurance Strategy Call
               </Button>
             </div>
           </div>
         </section>
 
-        <section className="py-16 md:py-24">
+        <section className="pt-16 md:pt-24 pb-8 md:pb-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -137,48 +137,32 @@ const ServicePayroll: React.FC = () => {
           </div>
         </section>
 
-        <div className="bg-primary-50 py-12">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 className="text-2xl font-bold text-primary-800 mb-4">Who We Help</h3>
-            <p className="text-neutral-700 max-w-3xl mx-auto mb-6">
-              Families, professionals, business owners, and retirees who want a clear, confident plan for insurance and investments—not a stack of policies they do not
-              understand.
-            </p>
-            <Button variant="secondary" size="lg" href={CALENDLY_CONSULTATION_URL} external={true}>
-              Book Free Insurance Review
-            </Button>
-          </div>
-        </div>
-
-        <section className="py-16 md:py-24">
+        <section className="pt-8 md:pt-12 pb-16 md:pb-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-primary-800 text-center mb-12">Insurance & Investment Solutions We Offer</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-visible">
               {INSURANCE_SERVICES.map((service, i) => {
                 const isHovered = hoveredIndex === i;
-                const someHovered = hoveredIndex !== null;
-                const isPushed = someHovered && !isHovered;
                 return (
                   <div
                     key={service.title}
                     onMouseEnter={() => setHoveredIndex(i)}
                     onMouseLeave={() => setHoveredIndex(null)}
                     className={`
-                      relative flex items-start gap-3 p-4 bg-white rounded-xl border-2 transition-all duration-300 ease-out
+                      relative flex items-start gap-3 p-4 rounded-xl border-2 transition-all duration-300 ease-out overflow-visible
                       ${isHovered
-                        ? 'border-primary-500 shadow-xl scale-[1.02] z-20'
-                        : isPushed
-                          ? 'border-neutral-100 scale-[0.96] translate-y-2 opacity-90'
-                          : 'border-transparent shadow-md hover:border-primary-200'
+                        ? 'bg-gradient-to-br from-primary-50 to-secondary-50 border-primary-500 shadow-xl ring-2 ring-secondary-400/30 scale-105 z-30 border-l-4 border-l-secondary-500'
+                        : 'bg-white border-transparent shadow-md hover:border-primary-200 hover:bg-primary-50/30 z-0'
                       }
                     `}
                   >
-                    <Shield className="w-6 h-6 text-secondary-500 flex-shrink-0 mt-1" />
-                    <div className="min-w-0 flex-1">
-                      <h3 className="text-neutral-800 font-semibold mb-1">{service.title}</h3>
-                      <p className="text-neutral-600 text-sm">{service.short}</p>
+                    <Shield className={`w-6 h-6 flex-shrink-0 mt-1 transition-colors duration-300 ${isHovered ? 'text-secondary-600' : 'text-secondary-500'}`} />
+                    <div className="min-w-0 flex-1 relative">
+                      <h3 className={`font-semibold mb-1 transition-colors duration-300 ${isHovered ? 'text-primary-800' : 'text-neutral-800'}`}>{service.title}</h3>
+                      <p className={`text-sm transition-colors duration-300 ${isHovered ? 'text-primary-700' : 'text-neutral-600'}`}>{service.short}</p>
                       {isHovered && (
-                        <div className="mt-4 p-3 bg-primary-50 rounded-lg border border-primary-100">
+                        <div className="absolute left-0 right-0 top-full mt-2 p-4 rounded-xl border-2 border-primary-300 bg-white shadow-2xl ring-2 ring-primary-200/50 z-40 min-w-[280px] animate-fade-in border-l-4 border-l-secondary-500 bg-gradient-to-b from-primary-50/80 to-white">
+                          <p className="text-primary-800 font-medium text-xs uppercase tracking-wide mb-2">Learn more</p>
                           <p className="text-neutral-700 text-sm leading-relaxed">{service.detail}</p>
                         </div>
                       )}
@@ -190,14 +174,14 @@ const ServicePayroll: React.FC = () => {
           </div>
         </section>
 
-        <section className="py-16 md:py-24 bg-white">
+        <section className="py-12 md:py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start">
+              <div className="h-[320px] md:h-[380px] w-full rounded-2xl shadow-xl overflow-hidden">
                 <img
                   src="https://images.pexels.com/photos/4386397/pexels-photo-4386397.jpeg?auto=compress&cs=tinysrgb&w=800"
                   alt="Couple reviewing retirement plan with financial advisor"
-                  className="rounded-2xl shadow-xl"
+                  className="w-full h-full object-cover object-center"
                   loading="lazy"
                   decoding="async"
                 />
@@ -212,7 +196,7 @@ const ServicePayroll: React.FC = () => {
                   You will leave with a step-by-step plan that may include life insurance, health coverage options for retirement, mutual funds, annuities, 401(k)
                   rollovers, and more—explained in plain English so you can make confident decisions.
                 </p>
-                <Button variant="primary" size="lg" href={CALENDLY_CONSULTATION_URL} external={true}>
+                <Button variant="primary" size="lg" href={CALENDLY_INSURANCE_URL} external={true}>
                   Get Your Personalized Plan
                 </Button>
               </div>
@@ -226,7 +210,7 @@ const ServicePayroll: React.FC = () => {
             <p className="text-xl text-neutral-200 mb-8 max-w-2xl mx-auto">
               One conversation today can change the next 20 years of your financial life. Let us help you design an insurance and retirement strategy that fits you.
             </p>
-            <Button variant="secondary" size="lg" href={CALENDLY_CONSULTATION_URL} external={true}>
+            <Button variant="secondary" size="lg" href={CALENDLY_INSURANCE_URL} external={true}>
               Schedule Free Consultation
             </Button>
           </div>

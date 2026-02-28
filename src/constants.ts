@@ -6,6 +6,9 @@ export const SITE_URL = 'https://transcendents3.com';
 export const CALENDLY_CONSULTATION_URL =
   'https://calendly.com/transcendents3/15-minute-discovery-call';
 
+/** Insurance & retirement planning – book free insurance call (30 min) */
+export const CALENDLY_INSURANCE_URL = 'https://calendly.com/ins-transcendents3/30min';
+
 export const ASSESSMENT_FORM_EMAIL = 'transcendents3@gmail.com';
 
 export const FORM_SUBMIT_URL = `https://formsubmit.co/ajax/${ASSESSMENT_FORM_EMAIL}`;

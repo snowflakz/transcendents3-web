@@ -15,7 +15,7 @@ const Services: React.FC = () => {
       icon: <DollarSign size={24} />,
       title: 'Insurance & Retirement Planning',
       description: 'Life and health insurance for seniors, auto and mortgage protection, mutual funds, annuities, 401(k) rollovers, college fund and retirement planning tailored to your goals.',
-      href: '/services#payroll',
+      href: '/services#insurance',
     },
     {
       icon: <FileText size={24} />,

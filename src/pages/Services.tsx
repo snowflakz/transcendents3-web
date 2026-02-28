@@ -25,12 +25,12 @@ const Services: React.FC = () => {
       image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600',
     },
     {
-      id: 'payroll',
+      id: 'insurance',
       icon: <DollarSign size={40} className="text-secondary-500" />,
       title: 'Insurance & Retirement Planning',
       description:
         'Life insurance, health insurance for seniors, mutual funds, annuities, 401(k) rollovers, auto and mortgage protection, college fund and retirement planning designed around your goals.',
-      path: '/services/payroll',
+      path: '/services/insurance',
       image: 'https://images.pexels.com/photos/7821906/pexels-photo-7821906.jpeg?auto=compress&cs=tinysrgb&w=600',
     },
     {
@@ -75,6 +75,7 @@ const Services: React.FC = () => {
             {services.map((service) => (
               <Link
                 key={service.id}
+                id={service.id}
                 to={service.path}
                 className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >

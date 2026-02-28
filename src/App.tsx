@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import { NotificationProvider } from './components/ui/NotificationProvider';
 
@@ -43,7 +43,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/bookkeeping" element={<ServiceBookkeeping />} />
-            <Route path="/services/payroll" element={<ServicePayroll />} />
+            <Route path="/services/insurance" element={<ServicePayroll />} />
+            <Route path="/services/payroll" element={<Navigate to="/services/insurance" replace />} />
             <Route path="/services/quickbooks-cleanup" element={<ServiceQuickBooksCleanup />} />
             <Route path="/services/consulting" element={<ServiceConsulting />} />
             <Route path="/about" element={<About />} />

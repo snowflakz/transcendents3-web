@@ -16,7 +16,7 @@ const Testimonials: React.FC = () => {
       rating: 5,
     },
     {
-      quote: "The team at Transcendents3 handled our payroll with incredible precision. They're responsive, detail-oriented, and truly care about our business success.",
+      quote: "The team at Transcendents3 handled our insurance and retirement planning with incredible precision. They're responsive, detail-oriented, and truly care about our business success.",
       author: "Michael Chen",
       position: "Operations Director",
       company: "Nexus Technologies",

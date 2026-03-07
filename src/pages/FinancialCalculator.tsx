@@ -195,7 +195,7 @@ const FinancialCalculator: React.FC = () => {
 
         {/* Print-only A4 layout - shown when printing */}
         {result && (
-          <div className="hidden print-only bg-white p-8" style={{ minHeight: '297mm', width: '210mm', margin: '0 auto' }}>
+          <div className="hidden print-only bg-white p-8 flex flex-col" style={{ minHeight: '297mm', width: '210mm', margin: '0 auto' }}>
             <img src="/other%20logo.png" alt="Transcendents3" className="h-14 mb-8" />
             <h1 className="text-2xl font-bold text-primary-800 mb-6">Profit & Margin Calculator — Results</h1>
             <div className="space-y-2 mb-8">
@@ -212,9 +212,12 @@ const FinancialCalculator: React.FC = () => {
                 <tr><td className="py-2">Net Profit Margin</td><td className="text-right font-bold text-secondary-600">{result.netMargin.toFixed(1)}%</td></tr>
               </tbody>
             </table>
-            <p className="text-xs text-neutral-600 mt-8 leading-relaxed">
-              Disclaimer: This calculator provides an estimated calculation based on the values entered. It is intended for informational purposes only. For accurate interpretation of your personal or organizational finances, please consult a qualified professional accountant, bookkeeper, or financial advisor.
-            </p>
+            <div className="mt-auto pt-8">
+              <p className="text-xs text-neutral-600 leading-relaxed">
+                Disclaimer: This calculator provides an estimated calculation based on the values entered. It is intended for informational purposes only. For accurate interpretation of your personal or organizational finances, please consult a qualified professional accountant, bookkeeper, or financial advisor.
+              </p>
+              <hr className="mt-4 border-t-2 border-primary-600" style={{ borderColor: '#1B2B5E' }} aria-hidden="true" />
+            </div>
           </div>
         )}
       </div>

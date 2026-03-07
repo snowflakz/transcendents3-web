@@ -14,4 +14,14 @@
     display: block !important;
     position: static !important;
   }
+  /* Hide chat widget (Chatbase / "How can I help you?") when printing */
+  [id*="chatbase"],
+  [class*="chatbase"],
+  [id*="chat-base"],
+  iframe[src*="chatbase"],
+  iframe[title*="chat"],
+  a[href*="chatbase"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
 }

@@ -13,13 +13,19 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen font-body">
       <ScrollToTop />
-      <Header />
+      <div className="no-print">
+        <Header />
+      </div>
       <main className="flex-grow">
         {children}
       </main>
-      <Footer />
+      <div className="no-print">
+        <Footer />
+      </div>
       <ChatWidget />
-      <SimpleCookieBanner />
+      <div className="no-print">
+        <SimpleCookieBanner />
+      </div>
     </div>
   );
 };

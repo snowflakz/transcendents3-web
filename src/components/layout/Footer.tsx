@@ -133,8 +133,8 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="mr-3 text-secondary-500 flex-shrink-0" />
-                <a href="mailto:info@transcedents3.com" className="text-neutral-300 hover:text-secondary-500 transition-colors">
-                  info@transcedents3.com
+                <a href="mailto:contact@transcendents3.com" className="text-neutral-300 hover:text-secondary-500 transition-colors">
+                  contact@transcendents3.com
                 </a>
               </li>
             </ul>

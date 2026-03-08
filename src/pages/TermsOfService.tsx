@@ -88,7 +88,7 @@ const TermsOfService: React.FC = () => (
           <p className="mb-6 text-neutral-700">
             If you have any questions about these Terms, please contact us at:
             <br />
-            <strong>Email:</strong> info@transcendents3.com<br />
+            <strong>Email:</strong> contact@transcendents3.com<br />
             <strong>Phone:</strong> +1 (540) 929 9002<br />
             <strong>Address:</strong> 5614 W Grand Pkwy, S Ste 102. Richmond, TX. 77407.
           </p>

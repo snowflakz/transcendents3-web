@@ -32,7 +32,7 @@ function getEbookEmailHtml(firstName: string, downloadUrl: string): string {
 
 <p>Visit <a href="https://transcendents3.com" style="color:#1e40af;text-decoration:underline;">transcendents3.com</a> to book your slot today!</p>
 
-<p>Warm regards,<br/>The Transcendents3 Team<br/><span style="font-size:12px;color:#64748b;">Email: info@transcendents3.com | Phone: +1 (540) 929-9002 | Website: transcendents3.com</span></p>
+<p>Warm regards,<br/>The Transcendents3 Team<br/><span style="font-size:12px;color:#64748b;">Email: contact@transcendents3.com | Phone: +1 (540) 929-9002 | Website: transcendents3.com</span></p>
 `.trim();
 }
 

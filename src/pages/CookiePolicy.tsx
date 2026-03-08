@@ -300,7 +300,7 @@ function CookiePolicyContent() {
                     <h4 className="font-semibold text-primary-800 mb-2">Contact Information</h4>
                     <p className="text-neutral-700">
                       Phone: +1 (540) 929 9002<br />
-                      Email: info@transcendents3.com<br />
+                      Email: contact@transcendents3.com<br />
                       Website: transcendents3.com
                     </p>
                   </div>

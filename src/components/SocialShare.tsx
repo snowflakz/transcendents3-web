@@ -22,10 +22,10 @@ const SocialShare: React.FC<SocialShareProps> = ({ url, title, description = '',
       color: 'hover:bg-[#1877f2] hover:text-white',
     },
     {
-      name: 'Twitter',
-      href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+      name: 'X (Twitter)',
+      href: `https://x.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
       icon: Twitter,
-      color: 'hover:bg-[#1da1f2] hover:text-white',
+      color: 'hover:bg-[#000000] hover:text-white',
     },
     {
       name: 'LinkedIn',
@@ -43,12 +43,21 @@ const SocialShare: React.FC<SocialShareProps> = ({ url, title, description = '',
 
   const copyLink = async () => {
     try {
-      await navigator.clipboard.writeText(url);
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        const input = document.createElement('input');
+        input.value = url;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+      }
       if (typeof window !== 'undefined' && (window as Window & { showCopyFeedback?: () => void }).showCopyFeedback) {
         (window as Window & { showCopyFeedback?: () => void }).showCopyFeedback();
       }
     } catch {
-      window.open(`https://api.whatsapp.com/send?text=${encodedUrl}`, '_blank');
+      /* Copy failed; no fallback to avoid opening wrong app */
     }
   };
 

@@ -49,7 +49,7 @@ const faqs = [
   },
   {
     question: "How do I contact support if I have an urgent issue?",
-    answer: "You can reach us by phone at +1 (540) 929 9002 or email info@transcendents3.com for prompt assistance."
+    answer: "You can reach us by phone at +1 (540) 929 9002 or email contact@transcendents3.com for prompt assistance."
   }
 ];
 
@@ -99,7 +99,7 @@ const FAQ: React.FC = () => {
             <div>
               <h2 className="text-3xl font-bold text-primary-800 mb-6">We&apos;re Here to Help</h2>
               <p className="text-neutral-700 mb-4">Whether you&apos;re new to our services or a long-time client, we want to make sure you have the information you need. Below are answers to the questions we hear most often.</p>
-              <p className="text-neutral-700">Can&apos;t find what you&apos;re looking for? Reach out to us at info@transcendents3.com or call +1 (540) 929 9002.</p>
+              <p className="text-neutral-700">Can&apos;t find what you&apos;re looking for? Reach out to us at contact@transcendents3.com or call +1 (540) 929 9002.</p>
             </div>
           </div>
         </div>

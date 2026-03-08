@@ -23,6 +23,7 @@ const FinancialCalculator: React.FC = () => {
   } | null>(null);
   const [errors, setErrors] = useState<{ revenue?: string; cogs?: string; operatingExpenses?: string }>({});
   const [showDisclaimerModal, setShowDisclaimerModal] = useState(false);
+  const [showResultsModal, setShowResultsModal] = useState(false);
 
   const calculate = () => {
     const rev = parseNum(revenue);
@@ -52,6 +53,7 @@ const FinancialCalculator: React.FC = () => {
     setResult(null);
     setErrors({});
     setShowDisclaimerModal(false);
+    setShowResultsModal(false);
   };
 
   const handlePrint = () => {
@@ -199,8 +201,44 @@ const FinancialCalculator: React.FC = () => {
               <p className="text-sm text-neutral-700 leading-relaxed mb-6">
                 This calculator provides an estimated calculation based on the values you entered. It is intended for informational and educational purposes only. Results do not constitute professional financial, accounting, or tax advice. For accurate interpretation of your personal or organizational finances, please consult a qualified professional accountant, bookkeeper, or financial advisor.
               </p>
-              <Button variant="primary" size="lg" className="w-full" onClick={() => setShowDisclaimerModal(false)}>
+              <Button variant="primary" size="lg" className="w-full" onClick={() => { setShowDisclaimerModal(false); setShowResultsModal(true); }}>
                 I understand
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* Results modal - shown after "I understand", same style as Results section */}
+        {showResultsModal && result && (
+          <div className="no-print fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50" onClick={() => setShowResultsModal(false)} role="dialog" aria-modal="true" aria-labelledby="results-modal-title">
+            <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 border-2 border-primary-200" onClick={(e) => e.stopPropagation()}>
+              <div className="flex flex-wrap gap-3 items-center justify-between mb-4">
+                <h2 id="results-modal-title" className="text-lg font-semibold text-primary-800">Results</h2>
+                <Button variant="secondary" size="md" onClick={handlePrint}>
+                  <Printer className="inline-block w-5 h-5 mr-2" />
+                  Print
+                </Button>
+              </div>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                  <span className="text-neutral-700">Gross Profit</span>
+                  <span className="font-bold text-primary-800">{formatCurrency(result.grossProfit)}</span>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                  <span className="text-neutral-700">Gross Margin</span>
+                  <span className="font-bold text-primary-800">{result.grossMargin.toFixed(1)}%</span>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                  <span className="text-neutral-700">Operating Income</span>
+                  <span className="font-bold text-primary-800">{formatCurrency(result.operatingIncome)}</span>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-secondary-50 rounded-lg">
+                  <span className="text-neutral-700">Net Profit Margin</span>
+                  <span className="font-bold text-secondary-600">{result.netMargin.toFixed(1)}%</span>
+                </div>
+              </div>
+              <Button variant="outline" size="lg" className="w-full mt-6" onClick={() => setShowResultsModal(false)}>
+                Close
               </Button>
             </div>
           </div>

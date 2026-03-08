@@ -18,9 +18,11 @@
   .print-logo {
     print-color-adjust: exact !important;
     -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
   }
   .print-logo {
-    filter: contrast(1.2) brightness(0.92);
+    /* Darker logo asset used for print; no filter so it prints at full strength */
+    opacity: 1;
   }
   /* Hide chat widget (Chatbase / "How can I help you?") when printing */
   [id*="chatbase"],

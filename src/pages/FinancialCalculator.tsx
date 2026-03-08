@@ -247,8 +247,8 @@ const FinancialCalculator: React.FC = () => {
         {/* Print-only A4 layout - shown when printing */}
         {result && (
           <div className="hidden print-only bg-white p-8 flex flex-col" style={{ minHeight: '297mm', width: '210mm', margin: '0 auto' }}>
-            <div className="print-logo-wrap mb-8">
-              <img src="/other%20logo.png" alt="Transcendents3" className="h-14 object-contain print-logo" />
+            <div className="print-logo-wrap mb-8 bg-white p-2">
+              <img src="/logo%20Transcent%202_png.png" alt="Transcendents3" className="h-14 object-contain print-logo" />
             </div>
             <h1 className="text-2xl font-bold text-primary-800 mb-6">Profit & Margin Calculator — Results</h1>
             <div className="space-y-2 mb-8">

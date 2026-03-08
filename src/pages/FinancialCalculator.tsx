@@ -22,6 +22,7 @@ const FinancialCalculator: React.FC = () => {
     netMargin: number;
   } | null>(null);
   const [errors, setErrors] = useState<{ revenue?: string; cogs?: string; operatingExpenses?: string }>({});
+  const [showDisclaimerModal, setShowDisclaimerModal] = useState(false);
 
   const calculate = () => {
     const rev = parseNum(revenue);
@@ -41,6 +42,7 @@ const FinancialCalculator: React.FC = () => {
     const operatingIncome = grossProfit - opEx;
     const netMargin = rev > 0 ? (operatingIncome / rev) * 100 : 0;
     setResult({ grossProfit, grossMargin, operatingIncome, netMargin });
+    setShowDisclaimerModal(true);
   };
 
   const reset = () => {
@@ -49,6 +51,7 @@ const FinancialCalculator: React.FC = () => {
     setOperatingExpenses('');
     setResult(null);
     setErrors({});
+    setShowDisclaimerModal(false);
   };
 
   const handlePrint = () => {
@@ -173,11 +176,6 @@ const FinancialCalculator: React.FC = () => {
                         <span className="font-bold text-secondary-600">{result.netMargin.toFixed(1)}%</span>
                       </div>
                     </div>
-                    <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-                      <p className="text-sm text-amber-800 leading-relaxed">
-                        <strong>Disclaimer:</strong> This calculator provides an estimated calculation based on the values you entered. It is intended for informational and educational purposes only. Results do not constitute professional financial, accounting, or tax advice. For accurate interpretation of your personal or organizational finances, please consult a qualified professional accountant, bookkeeper, or financial advisor.
-                      </p>
-                    </div>
                   </div>
                 )}
               </div>
@@ -193,10 +191,27 @@ const FinancialCalculator: React.FC = () => {
         </section>
         </div>
 
+        {/* Disclaimer pop-up modal - shown when Calculate is clicked */}
+        {showDisclaimerModal && (
+          <div className="no-print fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50" onClick={() => setShowDisclaimerModal(false)} role="dialog" aria-modal="true" aria-labelledby="disclaimer-title">
+            <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border-2 border-primary-200" onClick={(e) => e.stopPropagation()}>
+              <h2 id="disclaimer-title" className="text-lg font-bold text-primary-800 mb-4">Important notice</h2>
+              <p className="text-sm text-neutral-700 leading-relaxed mb-6">
+                This calculator provides an estimated calculation based on the values you entered. It is intended for informational and educational purposes only. Results do not constitute professional financial, accounting, or tax advice. For accurate interpretation of your personal or organizational finances, please consult a qualified professional accountant, bookkeeper, or financial advisor.
+              </p>
+              <Button variant="primary" size="lg" className="w-full" onClick={() => setShowDisclaimerModal(false)}>
+                I understand
+              </Button>
+            </div>
+          </div>
+        )}
+
         {/* Print-only A4 layout - shown when printing */}
         {result && (
           <div className="hidden print-only bg-white p-8 flex flex-col" style={{ minHeight: '297mm', width: '210mm', margin: '0 auto' }}>
-            <img src="/other%20logo.png" alt="Transcendents3" className="h-14 mb-8" />
+            <div className="print-logo-wrap mb-8">
+              <img src="/other%20logo.png" alt="Transcendents3" className="h-14 object-contain print-logo" />
+            </div>
             <h1 className="text-2xl font-bold text-primary-800 mb-6">Profit & Margin Calculator — Results</h1>
             <div className="space-y-2 mb-8">
               <p><strong>Total Revenue:</strong> {formatCurrency(parseNum(revenue))}</p>

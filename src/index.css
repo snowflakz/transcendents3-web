@@ -14,6 +14,14 @@
     display: block !important;
     position: static !important;
   }
+  .print-logo-wrap,
+  .print-logo {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+  .print-logo {
+    filter: contrast(1.2) brightness(0.92);
+  }
   /* Hide chat widget (Chatbase / "How can I help you?") when printing */
   [id*="chatbase"],
   [class*="chatbase"],

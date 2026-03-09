@@ -55,7 +55,7 @@ function AboutContent() {
             <h1 className="text-4xl md:text-5xl font-bold font-heading text-white mb-6">
               About Transcendents3
             </h1>
-            <p className="text-xl text-neutral-200">
+                <p className="text-xl text-neutral-200">
               Your trusted partner for financial excellence
             </p>
           </div>
@@ -85,7 +85,7 @@ function AboutContent() {
                   Founded in 2010, Transcendents3 began with a simple mission: to provide small and medium-sized businesses with the financial expertise typically available only to large corporations.
                 </p>
                 <p>
-                  Our founder, Jennifer Thompson, recognized that many business owners were struggling with complex financial tasks that took them away from growing their businesses. With her background in corporate finance and a passion for helping entrepreneurs succeed, she assembled a team of financial experts dedicated to making financial management accessible and effective.
+                  Our founder, Anita Umosen, recognized that many business owners were struggling with complex financial tasks that took them away from growing their businesses. With her background in corporate finance and a passion for helping entrepreneurs succeed, she assembled a team of financial experts dedicated to making financial management accessible and effective.
                 </p>
                 <p>
                   Today, Transcendents3 serves hundreds of clients across diverse industries, providing comprehensive financial services that help businesses not just survive, but thrive in competitive markets.

@@ -21,9 +21,9 @@ const About: React.FC = () => {
 function AboutContent() {
   const teamMembers = [
     {
-      name: "Anita",
+      name: "Anita Umosen",
       position: "Founder & CEO",
-      bio: "With over 15 years of experience in financial management, Anita founded Transcendents3 to help small businesses thrive through expert financial guidance. She is a certified QuickBooks ProAdvisor.",
+      bio: "With over 15 years of experience in financial management, Anita Umosen founded Transcendents3 to help small businesses thrive through expert financial guidance. She is a certified QuickBooks ProAdvisor.",
       imageSrc: "/team/Jennifer.png"
     },
     {

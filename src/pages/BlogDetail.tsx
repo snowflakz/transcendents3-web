@@ -161,7 +161,7 @@ const blogPosts = [
     id: '4',
     title: 'Payroll Compliance: Avoiding Common Mistakes and Penalties',
     date: 'March 22, 2023',
-    author: 'Jennifer Thompson',
+    author: 'Anita',
     imageSrc: 'https://images.pexels.com/photos/7821906/pexels-photo-7821906.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     content: (
       <>

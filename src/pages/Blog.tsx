@@ -52,7 +52,7 @@ function BlogContent() {
       id: 4,
       title: "Payroll Compliance: Avoiding Common Mistakes and Penalties",
       excerpt: "Stay compliant with payroll regulations and avoid costly penalties with these essential payroll best practices.",
-      author: "Jennifer Thompson",
+      author: "Anita",
       date: "March 22, 2023",
       category: "Payroll",
       imageSrc: "https://images.pexels.com/photos/7821906/pexels-photo-7821906.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
